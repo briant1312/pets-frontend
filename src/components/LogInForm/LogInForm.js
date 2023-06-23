@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { logIn } from "../../utilities/users-api"
+import { getUser } from "../../utilities/users-service.js"
 import './LogInForm.scss'
 
 // export default function LogInForm(){
@@ -24,6 +25,10 @@ async function handleSubmit (event){
     try{
     event.preventDefault()
     const userToLogIn = await logIn(credentials)
+    window.localStorage.setItem('token', userToLogIn)
+    console.log(userToLogIn)
+    const user = getUser()
+    console.log(user)
     // setUser(userToLogIn)
     } catch {
         setError('Error Loggin In')
@@ -33,11 +38,11 @@ async function handleSubmit (event){
     return (
         <div className="form-container">
         <form autoComplete="off" onSubmit={handleSubmit}>
-            <label>Email</label>
+            <label>userName</label>
             <input 
-                type='email'
-                name='email'
-                value={credentials.email}
+                type='text'
+                name='userName'
+                value={credentials.userName}
                 onChange={handleChange}
                 required
             />
