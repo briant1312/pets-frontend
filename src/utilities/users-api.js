@@ -13,13 +13,13 @@ export async function signUp(userData) {
 
 export async function logIn(credentials) {
     try {
-        return sendRequest(`${BASE_URL}/log-in`, 'POST', credentials)
+        return sendRequest(`${BASE_URL}/login`, 'POST', credentials)
     } catch(err) {
         console.error(err)
     }
 }
 
-export default async function sendRequest(url, method='GET', payload=null) {
+export default async function sendRequest(url, method='GET, POST, PUT', payload=null) {
     try {
         console.log("base url:", process.env.REACT_APP_BASE_URL)
 

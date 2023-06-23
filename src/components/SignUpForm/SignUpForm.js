@@ -16,13 +16,13 @@ export default function SignUpForm() {
         error: ''
     })
 
-    const handleChange = (event) => {
+    const handleChange = (event) => 
         setState({
             ...state,
             [event.target.name]: event.target.value,
             error: ''
         })
-    }
+    
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -33,11 +33,11 @@ export default function SignUpForm() {
             // delete formData.error
             // delete formData.confirm
             console.log(formData)
-
+         
             // wait for a response back from the server
             const user = await signUp(formData)
             // just for right now console.log
-            console.log(user)
+            console.log("user", user)
             // setUser(user)
         } catch (error) {
             console.log(error)
@@ -78,6 +78,7 @@ export default function SignUpForm() {
                 />
                 <button type="submit">Sign Up</button>
             </form>
+            <p>Have an account <a href="/login">Sign in</a></p>
             <p className="error-message">{state.error}</p>
         </div>
     )

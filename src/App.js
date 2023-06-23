@@ -2,6 +2,7 @@
 import { Routes, Route } from "react-router-dom";
 import SignUpForm from "./components/SignUpForm/SignUpForm.js";
 import LogInForm from "./components/LogInForm/LogInForm.js"
+import SignOutForm from "./components/SignOutForm/SignOutForm.js"
 import Home from './screens/Home/Home.js'
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
         <Route
                 path="login"
                 element={<LogInForm/>}/>
+        <Route
+                path="signout"
+                element={<SignOutForm/>}/>
       </Routes>
     </div>
   );
