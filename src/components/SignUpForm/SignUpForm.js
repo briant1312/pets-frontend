@@ -1,13 +1,9 @@
 import { signUp } from "../../utilities/users-service"
-// import { setUser } from "../../pages/App/AuthPage/AuthPage"
 import { useState } from 'react'
 import './SignUpForm.scss'
 
-// export default function SignUpForm(){
-//     return <h1>SignUpForm</h1>
-// }
 
-export default function SignUpForm() {
+export default function SignUpForm({ setUser }) {
     // state is just a POJO(plain old javascript object)
     const [state, setState] = useState({
         userName: '',
@@ -27,18 +23,12 @@ export default function SignUpForm() {
     const handleSubmit = async (event) => {
         event.preventDefault()
         try {
-            console.log("state:", state)
             // taking the state and making a copy of the state and assigning a variable 'formData'
             const formData = {userName: state.userName, password: state.password}
-            // delete formData.error
-            // delete formData.confirm
-            console.log(formData)
-         
+           
             // wait for a response back from the server
             const user = await signUp(formData)
-            // just for right now console.log
-            console.log("user", user)
-            // setUser(user)
+            setUser(user)
         } catch (error) {
             console.log(error)
             setState({

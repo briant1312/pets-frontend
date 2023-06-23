@@ -1,9 +1,9 @@
 import SignOut  from "../../components/SignOutForm/SignOutForm.js"
 
-export default function Home(){
+export default function Home({setUser}){
     return (
     <>
     <h1>Home</h1>
-    <SignOut />
+    <SignOut setUser={setUser}/>
     </>
 )}
