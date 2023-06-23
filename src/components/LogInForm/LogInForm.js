@@ -1,11 +1,14 @@
 import { useState } from "react"
 import { logIn } from "../../utilities/users-api"
-import './LoginForm.scss'
+import './LogInForm.scss'
 
+// export default function LogInForm(){
+//     return <h1>LogInForm</h1>
+// }
 
-export default function LogInForm({ setUser }){
+export default function LogInForm(){
     const [credentials, setCredentials] = useState({
-        email: '',
+        userName: '',
         password: ''
     })
     const [error, setError] = useState('')
@@ -21,7 +24,7 @@ async function handleSubmit (event){
     try{
     event.preventDefault()
     const userToLogIn = await logIn(credentials)
-    setUser(userToLogIn)
+    // setUser(userToLogIn)
     } catch {
         setError('Error Loggin In')
     }

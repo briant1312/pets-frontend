@@ -2,6 +2,7 @@ import {createBrowserRouter, createRoutesFromElements, Route} from "react-router
 import App from "./App"
 import SignUpForm from './components/SignUpForm/SignUpForm'
 import LogInForm from "./components/LogInForm/LogInForm"
+import Home from './components/Home/Home'
 
 const router = createBrowserRouter(createRoutesFromElements(
     <>

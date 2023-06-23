@@ -1,10 +1,24 @@
-import { Outlet } from "react-router-dom";
+// import { Outlet } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import SignUpForm from "./components/SignUpForm/SignUpForm.js";
+import LogInForm from "./components/LogInForm/LogInForm.js"
+import Home from './components/Home/Home.js'
 
 function App() {
   return (
     <div className="App">
-      HOME
-      <Outlet/>
+      {/* <Outlet/> */}
+      <Routes>
+        <Route 
+                path="/" 
+                element={<Home/>}/>
+        <Route
+                path="signup"
+                element={<SignUpForm/>}/>
+        <Route
+                path="login"
+                element={<LogInForm/>}/>
+      </Routes>
     </div>
   );
 }
