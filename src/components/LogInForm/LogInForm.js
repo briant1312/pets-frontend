@@ -2,12 +2,11 @@ import { useState } from "react"
 import { logIn } from "../../utilities/users-api"
 import { getUser } from "../../utilities/users-service.js"
 import './LogInForm.scss'
+import { useNavigate } from 'react-router-dom';
 
-// export default function LogInForm(){
-//     return <h1>LogInForm</h1>
-// }
 
-export default function LogInForm(){
+export default function LogInForm({setUser}){
+    const navigate = useNavigate()
     const [credentials, setCredentials] = useState({
         userName: '',
         password: ''
@@ -29,7 +28,8 @@ async function handleSubmit (event){
     console.log(userToLogIn)
     const user = getUser()
     console.log(user)
-    // setUser(userToLogIn)
+    setUser(user)
+    navigate('/signout')
     } catch {
         setError('Error Loggin In')
     }
