@@ -6,6 +6,7 @@ import SignOutForm from "./components/SignOutForm/SignOutForm.js"
 import Home from './screens/Home/Home.js'
 import { getUser } from "./utilities/users-service.js"
 import { useState } from "react"
+import SearchByBreed from "./screens/SearchByBreed/SearchByBreed.js";
 
 function App() {
   const [user, setUser] = useState(getUser())
@@ -25,6 +26,9 @@ function App() {
         <Route
                 path="signout"
                 element={<SignOutForm setUser={setUser}/>}/>
+        <Route
+                path="searchbybreed"
+                element={<SearchByBreed/>}/>
       </Routes>
     </div>
   );
