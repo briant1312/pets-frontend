@@ -19,9 +19,8 @@ export async function logIn(credentials) {
     }
 }
 
-export default async function sendRequest(url, method='GET, POST, PUT', payload=null) {
+export default async function sendRequest(url, method='GET', payload=null) {
     try {
-        console.log("base url:", process.env.REACT_APP_BASE_URL)
 
         const options = { method }
         if(payload) {

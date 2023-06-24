@@ -15,6 +15,7 @@ export default function NavBar({ setUser }) {
             <Link to="/profile">Profile</Link>
             <Link to="/login">Log In</Link>
             <Link to="/signup">Sign Up</Link>
+            <Link to="posts">Posts</Link>
             <Link onClick={handleSignOut} to="/">Sign Out</Link>
         </nav>
     )
