@@ -4,7 +4,7 @@ export default function CatInfoCard({cat}){
             {cat && 
                 <>
                     <h1>{cat.name}</h1>
-                    <img src={cat.image.url} alt="cat"/>
+                    {cat.image?.url && <img src={cat.image.url} alt="cat"/>}
                     <p>temperament: {cat.temperament}</p>
                     <p>life span: {cat.life_span}</p>
                     <p>origin: {cat.origin || "unknown"}</p>
