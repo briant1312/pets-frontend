@@ -29,7 +29,7 @@ async function handleSubmit (event){
     const user = getUser()
     console.log(user)
     setUser(user)
-    navigate('/signout')
+    navigate('/')
     } catch {
         setError('Error Loggin In')
     }

@@ -37,8 +37,8 @@ export default function SearchByBreed(){
             </select>}
         </form>
 
-        <DogInfoCard dog={dogs.find((breed) => breed.name === breed)}/>
-        <CatInfoCard cat={cats.find((breed) => breed.name === breed)}/>
+            {species === "dog" && <DogInfoCard dog={dogs.find((dog) => dog.name === breed)}/>}
+            {species === "cat" &&<CatInfoCard cat={cats.find((cat) => cat.name === breed)}/>}
         
     </>
 )}
