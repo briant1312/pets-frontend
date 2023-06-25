@@ -8,31 +8,18 @@ export default function Posts({ user }) {
     const [posts, setPosts] = useState([])
     const { resource } = useParams()
 
-    const onQueryChange = (e) => {
-        setQuery(e.target.value)
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
+    useEffect(() => {
+        async function loadPosts(){
             const posts = await postsAPI.index(resource, query)
             setPosts(posts)
-        } catch(err) {
-            console.error(err)
         }
-    }
 
-    useEffect(() => {
-        setPosts([])
+        loadPosts()
     }, [resource])
 
     return (
         <div>
             <h1>{resource}</h1>
-            <form onSubmit={handleSubmit}>
-                <input value={query} onChange={onQueryChange}/>
-                <button >Submit</button>
-            </form>
             <PostList posts={posts} user={user} />
         </div>
     )
