@@ -12,30 +12,49 @@ export default function PostShowItem({ resourceId }) {
 
     useEffect(() => {
         const getPost = async () => {
-            const selectedPost = await show(resourceId)
-            setPost(selectedPost)
-            setLikeTotal(selectedPost.likes.length - selectedPost.dislikes.length)
+            try {
+                const selectedPost = await show(resourceId)
+                setPost(selectedPost)
+                setLikeTotal(selectedPost.likes.length - selectedPost.dislikes.length)
+            } catch(err) {
+                console.error(err)
+            }
         }
         getPost(resourceId)
     },[resourceId])
 
     const handleLike = async (e) => {
         e.stopPropagation()
-        const updatedPost = await likePost(post._id)
-        setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
+        try {
+            const updatedPost = await likePost(post._id)
+            setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
+
+        } catch(err) {
+            console.error(err)
+        }
     }
 
     const handleDislike = async (e) => {
         e.stopPropagation()
-        const updatedPost = await dislikePost(post._id)
-        setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
+        try {
+            const updatedPost = await dislikePost(post._id)
+            setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
+
+        } catch(err) {
+            console.error(err)
+        }
     }
 
     const handleCreateComment = async (e) => {
         e.preventDefault()
-        const updatedPost = await createComment(post._id, { text: commentText})
-        setPost(updatedPost)
-        setCommentText("")
+        try {
+            const updatedPost = await createComment(post._id, { text: commentText})
+            setPost(updatedPost)
+            setCommentText("")
+
+        } catch(err) {
+            console.error(err)
+        }
     }
 
     return (

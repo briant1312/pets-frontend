@@ -45,7 +45,7 @@ export default function NavBar({ setUser }) {
 
                 <img src={logo} className="logo" />
 
-                <div class="nav-categories">
+                <div className="nav-categories">
 
                     <div>
                         <div className="cats-nav">

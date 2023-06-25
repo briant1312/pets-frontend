@@ -13,27 +13,26 @@ export default function LogInForm({setUser}){
     })
     const [error, setError] = useState('')
 
-function handleChange(event){
-    setCredentials({
-        ...credentials,
-        [event.target.name]: event.target.value,
-    })
-}
-
-async function handleSubmit (event){
-    try{
-    event.preventDefault()
-    const userToLogIn = await logIn(credentials)
-    window.localStorage.setItem('token', userToLogIn)
-    console.log(userToLogIn)
-    const user = getUser()
-    console.log(user)
-    setUser(user)
-    navigate('/')
-    } catch {
-        setError('Error Loggin In')
+    function handleChange(event){
+        setCredentials({
+            ...credentials,
+            [event.target.name]: event.target.value,
+        })
     }
-}
+
+    async function handleSubmit (event){
+        event.preventDefault()
+        try{
+            const userToLogIn = await logIn(credentials)
+            if(!userToLogIn) return
+            window.localStorage.setItem('token', userToLogIn)
+            const user = getUser()
+            setUser(user)
+            navigate('/')
+        } catch {
+            setError('Error Loggin In')
+        }
+    }
 
     return (
         <div className="form-container">
