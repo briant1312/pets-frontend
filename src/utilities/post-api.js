@@ -3,10 +3,10 @@ import sendRequest from "./users-api";
 const BASE_URL = "http://localhost:3001/api/post"
 
 
-export async function index(animal, query) {
+export async function index(category, query) {
     let queryString = ""
-    if(animal && query) queryString = `?animal=${animal}&q=${query}` 
-    else if (animal) queryString = `?animal=${animal}`
+    if(category && query) queryString = `?category=${category}&q=${query}` 
+    else if (category) queryString = `?category=${category}`
     else if (query) queryString = `?q=${query}`
     try {
         const posts = await sendRequest(BASE_URL + queryString)
