@@ -45,7 +45,7 @@ export default function SignUpForm({ setUser }) {
                 <label>Username</label>
                 <input
                     type='text'
-                    name='userName'
+                    name='Username'
                     value={state.userName}
                     onChange={handleChange}
                     required

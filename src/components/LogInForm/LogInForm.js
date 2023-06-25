@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { logIn } from "../../utilities/users-api"
 import { getUser } from "../../utilities/users-service.js"
-import './LogInForm.scss'
 import { useNavigate } from 'react-router-dom';
+// import './LogInForm.scss'
 
 
 export default function LogInForm({setUser}){
@@ -37,10 +37,10 @@ export default function LogInForm({setUser}){
     return (
         <div className="form-container">
         <form autoComplete="off" onSubmit={handleSubmit}>
-            <label>userName</label>
+            <label>Username</label>
             <input 
                 type='text'
-                name='userName'
+                name='Username'
                 value={credentials.userName}
                 onChange={handleChange}
                 required
