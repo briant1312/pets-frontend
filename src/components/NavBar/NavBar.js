@@ -51,7 +51,7 @@ export default function NavBar({ setUser }) {
             <select onChange={handleResouceChange} value={resourceRef.current}>
                 <option>Training</option>
                 <option>Nutrition</option>
-                <option>Health Care</option>
+                <option value="Healthcare">Health Care</option>
                 <option>Grooming</option>
                 <option>Other</option>
             </select>

@@ -10,6 +10,7 @@ import Profile from "./screens/Profile/Profile.js";
 import Posts from "./screens/posts/posts.js";
 import DogInfoCard from "./components/DogInfoCard/DogInfoCard.js"
 import CatInfoCard from "./components/CatInfoCard/CatInfoCard.js";
+import PostShow from "./screens/PostShow/PostShow.js";
 
 function App() {
   const [user, setUser] = useState(getUser())
@@ -35,6 +36,9 @@ function App() {
         <Route
                 path="resources/:resource"
                 element={<Posts user={user}/>}/>
+        <Route
+                path="show/:resourceId"
+                element={<PostShow />}/>
         <Route
                 path="profile"
                 element={<Profile user={user}/>}/>
