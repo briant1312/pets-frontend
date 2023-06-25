@@ -1,4 +1,10 @@
-export default function CatInfoCard({cat}){
+import { useParams } from 'react-router-dom'
+const cats = require("../../data/cats.json")
+
+export default function CatInfoCard(){
+    const { catId } = useParams()
+    const cat = cats.find((cat) => cat.name === catId)
+
     return (
         <div>
             {cat && 

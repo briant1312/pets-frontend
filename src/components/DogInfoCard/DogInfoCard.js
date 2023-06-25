@@ -1,6 +1,10 @@
 import './DogInfoCard.scss'
+import { useParams } from 'react-router-dom'
+const dogs = require('../../data/dogs.json')
 
-export default function DogInfoCard({dog}){
+export default function DogInfoCard(){
+    const { dogId } = useParams()
+    const dog = dogs.find((dog) => dog.name === dogId)
     return (
         <div className='dog-info-card'>
             {dog && 
