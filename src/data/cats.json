@@ -1434,7 +1434,14 @@
         "rex": 0,
         "suppressed_tail": 0,
         "short_legs": 0,
-        "hypoallergenic": 0
+        "hypoallergenic": 0,
+        "image": {
+            "id": "uByl389eBur",
+            "width": 1024,
+            "height": 768,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/5/5c/British_burmese_-_Andel_Alois_at_Cat_show.JPG"
+        }
+
     },
     {
         "weight": {
