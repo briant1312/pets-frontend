@@ -30,7 +30,7 @@ export default function SignUpForm({ setUser }) {
             const user = await signUp(formData)
             setUser(user)
         } catch (error) {
-            console.log(error)
+            console.error(error)
             setState({
                 ...state,
                 error: 'Sign up failed - Try again later'

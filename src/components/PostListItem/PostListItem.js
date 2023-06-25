@@ -17,14 +17,22 @@ export default function PostListItem({ post, user }) {
 
     const handleLike = async (e) => {
         e.stopPropagation()
-        const updatedPost = await likePost(post._id)
-        setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
+        try {
+            const updatedPost = await likePost(post._id)
+            setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
+        } catch(err) {
+            console.error(err)
+        }
     }
 
     const handleDislike = async (e) => {
         e.stopPropagation()
-        const updatedPost = await dislikePost(post._id)
-        setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
+        try {
+            const updatedPost = await dislikePost(post._id)
+            setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
+        } catch(err) {
+            console.error(err)
+        }
     }
     
     return (
