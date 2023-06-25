@@ -1,4 +1,6 @@
+import './CatInfoCard.scss'
 import { useParams } from 'react-router-dom'
+
 const cats = require("../../data/cats.json")
 
 export default function CatInfoCard(){
