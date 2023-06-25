@@ -9,10 +9,14 @@ export default function DogInfoCard(){
         <div className='dog-info-card'>
             {dog && 
                 <>
-                    <h1>{dog.name}</h1>
+                    <h3>{dog.name}</h3>
 
                     <div className='right-side'>
-                        {dog.image?.url && <img src={dog.image.url} alt="dog"/>}
+                        <div>
+                        {dog.image?.url && <img src={dog.image.url} className="image-size" alt="dog"/>}
+                        </div>
+                        <h3 className='about-breed'>About the Breed</h3>
+                        <p>{dog.description}</p>
                         <p><span>Temperament:</span> {dog.temperament}</p>
                         <p><span>Life span:</span> {dog.life_span}</p>
                         <p><span>Origin:</span> {dog.origin || "unknown"}</p>
