@@ -13,12 +13,12 @@ export default function DogInfoCard(){
 
                     <div className='right-side'>
                         {dog.image?.url && <img src={dog.image.url} alt="dog"/>}
-                        <p>temperament: {dog.temperament}</p>
-                        <p>life span: {dog.life_span}</p>
-                        <p>origin: {dog.origin || "unknown"}</p>
-                        <p>bred for: {dog.bred_for || "unknown"}</p>
-                        {dog.weight?.imperial && <p>weight: {dog.weight.imperial} pounds</p>}
-                        {dog.height?.imperial && <p>height at shoulders: {dog.height.imperial} inches</p>}
+                        <p><span>Temperament:</span> {dog.temperament}</p>
+                        <p><span>Life span:</span> {dog.life_span}</p>
+                        <p><span>Origin:</span> {dog.origin || "unknown"}</p>
+                        <p><span>Bred for:</span> {dog.bred_for || "unknown"}</p>
+                        {dog.weight?.imperial && <p><span>Weight:</span> {dog.weight.imperial} lbs</p>}
+                        {dog.height?.imperial && <p><span>Height at shoulders:</span> {dog.height.imperial} inches</p>}
                     </div>
                 </>
             }
