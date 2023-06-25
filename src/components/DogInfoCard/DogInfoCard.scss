@@ -11,12 +11,19 @@
     width: 80%;
 }
 
-img {
-    height: 60vh;
-    // width: 100%;
-    object-fit: contain;
-}
-
 span {
     font-weight: bold;
 }
+
+.about-breed {
+    margin-bottom: -15px;
+}
+
+.image-size {
+    height: 500px;
+    width: 670px;
+    border: 1px solid red;
+    object-fit: cover;
+    object-position: top;
+}
+
