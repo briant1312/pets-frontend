@@ -1,4 +1,4 @@
-import CommentListItem from "../CommentListItem/CommentListItem.js"
+import CommentListItem from "../CommentListItem/CommentListItem1.js"
 
 export default function CommentList({comments}){
     return (
