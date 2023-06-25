@@ -1,5 +1,5 @@
 .outer-div {
-    border: 1px solid red;
+    // border: 1px solid red;
     background-color: var(--nav-blue);
     height: 8rem;
     display: flex;
@@ -11,14 +11,14 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    border: 1px solid red;
+    // border: 1px solid red;
     height: 80%;
     width: 100vw;
 }
 
 .logo {
     height: 120px;
-    border: 1px solid red;
+    // border: 1px solid red;
 }
 
 .arrow {
@@ -26,7 +26,7 @@
 }
 
 .cats-nav, .dogs-nav, .resources-nav {
-    border: 1px solid red;
+    // border: 1px solid red;
     display: flex;
     align-items: center;
     gap: 10px;
