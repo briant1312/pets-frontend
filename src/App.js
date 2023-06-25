@@ -14,6 +14,7 @@ import PostShow from "./screens/PostShow/PostShow.js";
 
 function App() {
   const [user, setUser] = useState(getUser())
+  
   return (
     <div className="App">
         <NavBar setUser={setUser}/>

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import { logOut } from "../../utilities/users-service"
-import { useNavigate } from "react-router-dom"
-import { useRef } from "react"
+import { useRef, useState, useEffect } from "react"
 import './NavBar.scss'
 import '../global.scss'
 import logo from '../assets/GrayLogo.svg'
@@ -11,28 +10,43 @@ const dogs = require('../../data/dogs.json')
 
 
 export default function NavBar({ setUser }) {
-    const dogRef = useRef("")
-    const catRef = useRef("")
-    const resourceRef = useRef("")
+    const resources = ["Training", "Nutrition", "Healthcare", "Grooming", "Other"]
 
-    const navigate = useNavigate()
+    const [openCatDropdown, setOpenCatDropdown] = useState(false)
+    const [openDogDropdown, setOpenDogDropdown] = useState(false)
+    const [openResourceDropdown, setOpenResourceDropdown] = useState(false)
 
-    const handleDogBreedChange = (e) => {
-        catRef.current = ""
-        dogRef.current = e.target.value
-        navigate(`/dog-breeds/${dogRef.current}`)
+    const handleCatHeaderClick = (e) => {
+        e.stopPropagation()
+        setOpenDogDropdown(false)
+        setOpenResourceDropdown(false)
+        setOpenCatDropdown(!openCatDropdown)
     }
 
-    const handleCatBreedChange = (e) => {
-        dogRef.current = ""
-        catRef.current = e.target.value
-        navigate(`/cat-breeds/${catRef.current}`)
+    const handleDogHeaderClick = (e) => {
+        e.stopPropagation()
+        setOpenCatDropdown(false)
+        setOpenResourceDropdown(false)
+        setOpenDogDropdown(!openDogDropdown)
     }
 
-    const handleResouceChange = (e) => {
-        resourceRef.current = e.target.value
-        navigate(`/resources/${resourceRef.current}`)
+    const handleResourceHeaderClick = (e) => {
+        e.stopPropagation()
+        setOpenDogDropdown(false)
+        setOpenCatDropdown(false)
+        setOpenResourceDropdown(!openResourceDropdown)
     }
+
+    const handleLinkClick = () => {
+        setOpenCatDropdown(false)
+        setOpenDogDropdown(false)
+        setOpenResourceDropdown(false)
+    }
+
+    useEffect(() => {
+        window.addEventListener("click", handleLinkClick)
+        return () => window.removeEventListener("click", handleLinkClick)
+    }, [])
 
     const handleSignOut = () => {
         logOut()
@@ -43,50 +57,65 @@ export default function NavBar({ setUser }) {
         <nav>
             <div className="outer-div">
 
-                <img src={logo} className="logo" />
+                <Link to="/"><img src={logo} className="logo" /></Link>
+                
 
                 <div className="nav-categories">
 
                     <div>
                         <div className="cats-nav">
-                            <h1>Cats</h1>
+                            <h1 onClick={handleCatHeaderClick}>Cats</h1>
                             <img src={arrow}
                                 className="arrow" />
                         </div>
 
-                        <select className="cat-select" value={catRef} onChange={handleCatBreedChange}>
+                        <div className={`cat-dropdown ${openCatDropdown ? '' : 'hidden'}`}>
                             {cats.map((cat) => (
-                                <option key={cat.id}>{cat.name}</option>
+                                <Link 
+                                    to={`cat-breeds/${cat.name}`} 
+                                    onClick={handleLinkClick}>
+                                        {cat.name}
+                                </Link>
                             ))}
-                        </select>
+                        </div>
                     </div>
 
                     <div>
                         <div className="dogs-nav">
-                            <h1>Dogs</h1>
+                            <h1 onClick={handleDogHeaderClick}>Dogs</h1>
                             <img src={arrow}
                                 className="arrow" />
                         </div>
-                        <select className="dog-select" value={dogRef} onChange={handleDogBreedChange}>
+
+                        <div className={`dog-dropdown ${openDogDropdown ? '' : 'hidden'}`}>
                             {dogs.map((dog) => (
-                                <option key={dog.id}>{dog.name}</option>
+                                <Link 
+                                    to={`dog-breeds/${dog.name}`}
+                                    onClick={handleLinkClick}>
+                                        {dog.name}
+                                </Link>
                             ))}
-                        </select>
+                        </div>
                     </div>
 
                     <div>
                         <div className="resources-nav">
-                            <h1>Resources</h1>
+                            <h1 onClick={handleResourceHeaderClick}>Resources</h1>
                             <img src={arrow}
                                 className="arrow" />
                         </div>
-                        <select className="resources-select" onChange={handleResouceChange} value={resourceRef.current}>
-                            <option>Training</option>
-                            <option>Nutrition</option>
-                            <option value="Healthcare">Health Care</option>
-                            <option>Grooming</option>
-                            <option>Other</option>
-                        </select>
+
+                        <div className={`resource-dropdown ${openResourceDropdown ? '' : 'hidden'}`}>
+                            {resources.map((resource) => (
+                                <Link to={`/resources/${resource}`} onClick={handleLinkClick}>{resource}</Link>
+                            ))}
+
+                            {/* <Link to="resources/training">Training</Link>
+                            <Link to="resources/nutrition">Nutrition</Link>
+                            <Link to="resources/healthcare">Health Care</Link>
+                            <Link to="resources/grooming">Grooming</Link>
+                            <Link to="resources/other">Other</Link> */}
+                        </div>
                     </div>
 
                     <Link to="/login"><h1>Register/Sign In</h1></Link>

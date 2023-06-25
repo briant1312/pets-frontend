@@ -3,17 +3,20 @@
     background-color: var(--nav-blue);
     height: 8rem;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 2rem;
 }
 
 .nav-categories {
+    position: relative;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     // border: 1px solid red;
     height: 80%;
-    width: 100vw;
+    width: 100%;
+    max-width: 70vw;
 }
 
 .logo {
@@ -38,4 +41,21 @@
 
 .cat-select:hover, .dog-select:hover, .resources-select:hover{
     opacity: 1;
+}
+
+.cat-dropdown, .dog-dropdown, .resource-dropdown {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    max-height: 50vh;
+    overflow: scroll;
+    background-color: var(--nav-blue);
+    border-radius: 0 0 1rem 1rem;
+    padding: 1rem;
+}
+
+a {
+    color: black;
+    text-decoration: none;
 }
