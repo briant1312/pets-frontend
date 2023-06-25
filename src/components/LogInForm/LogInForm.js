@@ -55,6 +55,7 @@ export default function LogInForm({setUser}){
             />
             <button type="submit">Log In</button>
         </form>
+        <p>Need an account? <a href="/signup">Register</a></p>
         <p className="error-message">{error}</p>
     </div>
     )
