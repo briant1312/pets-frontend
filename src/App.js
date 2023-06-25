@@ -5,9 +5,7 @@ import SignOutForm from "./components/SignOutForm/SignOutForm.js"
 import Home from './screens/Home/Home.js'
 import { getUser } from "./utilities/users-service.js"
 import { useState } from "react"
-import SearchByBreed from "./screens/SearchByBreed/SearchByBreed.js";
 import NavBar from "./components/NavBar/NavBar.js";
-import Resources from "./screens/Resources/Resources.js";
 import Profile from "./screens/Profile/Profile.js";
 import Posts from "./screens/posts/posts.js";
 import DogInfoCard from "./components/DogInfoCard/DogInfoCard.js"
