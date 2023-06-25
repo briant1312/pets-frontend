@@ -37,10 +37,10 @@ export default function LogInForm({setUser}){
     return (
         <div className="form-container">
         <form autoComplete="off" onSubmit={handleSubmit}>
-            <label>userName</label>
+            <label>Username</label>
             <input 
                 type='text'
-                name='userName'
+                name='Username'
                 value={credentials.userName}
                 onChange={handleChange}
                 required
