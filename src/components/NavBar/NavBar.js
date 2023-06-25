@@ -2,6 +2,10 @@ import { Link } from "react-router-dom"
 import { logOut } from "../../utilities/users-service"
 import { useNavigate } from "react-router-dom"
 import { useRef } from "react"
+import './NavBar.scss'
+import '../global.scss'
+import logo from '../assets/GrayLogo.svg'
+import arrow from '../assets/arrow.svg'
 const cats = require('../../data/cats.json')
 const dogs = require('../../data/dogs.json')
 
@@ -37,25 +41,58 @@ export default function NavBar({ setUser }) {
 
     return (
         <nav>
-            <div>
-             <select value={dogRef} onChange={handleDogBreedChange}>
-                {dogs.map((dog) => (
-                    <option key={dog.id}>{dog.name}</option>
-                ))}
-            </select>
-            <select value={catRef} onChange={handleCatBreedChange}>
-                {cats.map((cat) => (
-                    <option key={cat.id}>{cat.name}</option>
-                ))}
-            </select>
-            <select onChange={handleResouceChange} value={resourceRef.current}>
-                <option>Training</option>
-                <option>Nutrition</option>
-                <option value="Healthcare">Health Care</option>
-                <option>Grooming</option>
-                <option>Other</option>
-            </select>
-        </div>
+            <div className="outer-div">
+
+                <img src={logo} className="logo" />
+
+                <div class="nav-categories">
+
+                    <div>
+                        <div className="cats-nav">
+                            <h1>Cats</h1>
+                            <img src={arrow}
+                                className="arrow" />
+                        </div>
+
+                        <select className="cat-select" value={catRef} onChange={handleCatBreedChange}>
+                            {cats.map((cat) => (
+                                <option key={cat.id}>{cat.name}</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div>
+                        <div className="dogs-nav">
+                            <h1>Dogs</h1>
+                            <img src={arrow}
+                                className="arrow" />
+                        </div>
+                        <select className="dog-select" value={dogRef} onChange={handleDogBreedChange}>
+                            {dogs.map((dog) => (
+                                <option key={dog.id}>{dog.name}</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div>
+                        <div className="resources-nav">
+                            <h1>Resources</h1>
+                            <img src={arrow}
+                                className="arrow" />
+                        </div>
+                        <select className="resources-select" onChange={handleResouceChange} value={resourceRef.current}>
+                            <option>Training</option>
+                            <option>Nutrition</option>
+                            <option value="Healthcare">Health Care</option>
+                            <option>Grooming</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <Link to="/login"><h1>Register/Sign In</h1></Link>
+                </div>
+
+            </div>
         </nav>
         // <nav>
         //     <Link to="/">Home</Link>
