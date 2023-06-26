@@ -4,6 +4,9 @@ import CommentList from "../CommentList/CommentList.js"
 import { likePost } from "../../utilities/post-api"
 import { dislikePost } from "../../utilities/post-api"
 import { createComment } from "../../utilities/comment-api"
+import arrow from "../assets/arrow.svg"
+import grooming from "../assets/grooming.jpg"
+import "./PostShowItem.scss"
 
 export default function PostShowItem({ resourceId }) {
     const [post, setPost] = useState(null)
@@ -58,17 +61,25 @@ export default function PostShowItem({ resourceId }) {
     }
 
     return (
-        <div>
+        <div className="post-item">
             {post &&
                 <>
-                    <h1>{post.title}</h1>
-                    <div>
-                        <button onClick={handleLike}>Like</button>
+                    <h1 className="post-title">{post.title}</h1>
+                    <div className="like-component">
+                    <div className="like-block">
+                    <img src={arrow} className="up-arrow" height="10px" onClick={handleLike} alt="like"/>
                         {likeTotal}
-                        <button onClick={handleDislike}>Disike</button>
+                    <img src={arrow} onClick={handleDislike} height="10px" alt="dislike"/>
                     </div>
-                    <textarea value={commentText} onChange={(e) => setCommentText(e.target.value)}/>
+                    <div>
+                    <img src={grooming} height="300vh" alt="groomed"/>
+                    </div>
+                    </div>
+                    <p className="post-text">{post.text}</p>
+                    <textarea className="comment-box" value={commentText} onChange={(e) => setCommentText(e.target.value)}/>
+                    <div>
                     <button onClick={handleCreateComment}>Submit</button>
+                    </div>
                     <CommentList comments ={post.comments}/>
                 </>
             }
