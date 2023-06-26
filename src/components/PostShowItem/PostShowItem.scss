@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    // position: relative;
 }
 
 .post-text {
@@ -69,4 +70,23 @@ button {
     position: absolute;
     bottom: 5px;
     right: 10px;  
+}
+
+.icons {
+  display: flex;
+  gap: 5px; 
+  border: 1px solid red;
+  position: absolute;
+  z-index: 10;
+  top: -25px; 
+}
+
+.icons-comment-input {
+    position: relative;
+    z-index: -10;
+    margin: 1rem; 
+}
+
+.comment-count {
+    margin-top: 0;
 }
