@@ -45,6 +45,7 @@ export default function PostListItem({ post, user, setUser }) {
         e.stopPropagation()
         try {
             const updatedUser = await savePost(post._id)
+            if(!updatedUser) return
             setUser(updatedUser)
             setUserSaved(updatedUser.savedResources.includes(post._id))
         } catch(err) {

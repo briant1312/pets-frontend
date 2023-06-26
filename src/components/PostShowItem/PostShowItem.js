@@ -68,6 +68,7 @@ export default function PostShowItem({ resourceId, user, setUser }) {
     e.stopPropagation()
     try {
       const updatedUser = await savePost(post._id)
+      if(!updatedUser) return
       setUser(updatedUser)
       setUserSaved(updatedUser.savedResources.includes(resourceId))
     } catch(err) {
