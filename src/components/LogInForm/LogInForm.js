@@ -40,7 +40,7 @@ export default function LogInForm({setUser}){
             <label>Username</label>
             <input 
                 type='text'
-                name='Username'
+                name='userName'
                 value={credentials.userName}
                 onChange={handleChange}
                 required
