@@ -1,0 +1,53 @@
+.post-title {
+    display: flex;
+
+}
+
+.up-arrow {
+    rotate: 180deg;
+}
+
+.post-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.like-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #dbdbdb;
+    border-radius: 20px;
+    padding: 15px;
+    border: 1px solid black ;
+    height: fit-content;
+    gap: 5px;
+}
+
+.like-component {
+    display: flex;
+    gap: 40px;
+}
+
+.post-text {
+    display: flex; 
+    align-items: center;
+}
+
+button {
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 20px;
+  padding: 0.6em 1em;
+  transition: all 0.3s ease;
+}
+
+.comment-box {
+    display: flex;
+    flex-direction: column;
+    background-color: #dbdbdb;
+    border-radius: 10px;
+    width: 90vw;
+}

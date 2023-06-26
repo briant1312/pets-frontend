@@ -68,7 +68,7 @@ export default function SignUpForm({ setUser }) {
                 />
                 <button type="submit">Sign Up</button>
             </form>
-            <p>Have an account <a href="/login">Sign in</a></p>
+            <p>Have an account? <a href="/login">Sign in</a></p>
             <p className="error-message">{state.error}</p>
         </div>
     )
