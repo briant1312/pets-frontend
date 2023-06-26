@@ -73,7 +73,9 @@ export default function NavBar({ setUser }) {
                             {cats.map((cat) => (
                                 <Link 
                                     to={`cat-breeds/${cat.name}`} 
-                                    onClick={handleLinkClick}>
+                                    onClick={handleLinkClick}
+                                    key={cat.id}
+                                    >
                                         {cat.name}
                                 </Link>
                             ))}
@@ -91,7 +93,9 @@ export default function NavBar({ setUser }) {
                             {dogs.map((dog) => (
                                 <Link 
                                     to={`dog-breeds/${dog.name}`}
-                                    onClick={handleLinkClick}>
+                                    onClick={handleLinkClick}
+                                    key={dog.id}
+                                    >
                                         {dog.name}
                                 </Link>
                             ))}
@@ -107,7 +111,7 @@ export default function NavBar({ setUser }) {
 
                         <div className={`resource-dropdown ${openResourceDropdown ? '' : 'hidden'}`}>
                             {resources.map((resource) => (
-                                <Link to={`/resources/${resource}`} onClick={handleLinkClick}>{resource}</Link>
+                                <Link to={`/resources/${resource}`} key={resource} onClick={handleLinkClick}>{resource}</Link>
                             ))}
 
                             {/* <Link to="resources/training">Training</Link>

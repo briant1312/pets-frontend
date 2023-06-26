@@ -30,7 +30,7 @@ export async function getSavedResources() {
 
 export async function savePost(postId) {
     try {
-        return sendRequest(`${BASE_URL}/save-post/${postId}`)
+        return sendRequest(`${BASE_URL}/save-post/${postId}`, 'PATCH')
     } catch(err) {
         console.error(err)
     }
