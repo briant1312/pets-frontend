@@ -8,8 +8,19 @@ export default function Posts({ user }) {
     const [posts, setPosts] = useState([])
     const { resource } = useParams()
 
+    const handleChange = (e) => {
+        setQuery(e.target.value)
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const posts = await postsAPI.index(resource, query)
+        setPosts(posts)
+        setQuery("")
+    }
+
     useEffect(() => {
-        async function loadPosts(){
+        async function loadPosts() {
             const posts = await postsAPI.index(resource, query)
             setPosts(posts)
         }
@@ -19,8 +30,18 @@ export default function Posts({ user }) {
 
     return (
         <div>
-            <h1>{resource}</h1>
-            <PostList posts={posts} user={user} />
+            <div>
+                <form onSubmit={handleSubmit}>
+                    <label>Search: </label>
+                    <input onChange={handleChange} type="text" value={query}></input>
+                    <input type="submit" value="enter"></input>
+                </form>
+            </div>
+
+            <div>
+                <h1>{resource}</h1>
+                <PostList posts={posts} user={user} />
+            </div>
         </div>
     )
 }
