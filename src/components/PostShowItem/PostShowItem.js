@@ -15,7 +15,7 @@ export default function PostShowItem({ resourceId, user, setUser }) {
   const [post, setPost] = useState(null);
   const [likeTotal, setLikeTotal] = useState(0);
   const [commentText, setCommentText] = useState("");
-  const [userSaved, setUserSaved] = useState(user.savedResources.includes(resourceId))
+  const [userSaved, setUserSaved] = useState(false)
   const [comments, setComments] = useState([])
 
   useEffect(() => {
@@ -31,6 +31,12 @@ export default function PostShowItem({ resourceId, user, setUser }) {
     };
     getPost(resourceId);
   }, [resourceId]);
+
+  useEffect(() => {
+    if (user) {
+     setUserSaved(user.savedResources.includes(resourceId))
+ }
+  }, [user])
 
   const handleLike = async (e) => {
     e.stopPropagation();

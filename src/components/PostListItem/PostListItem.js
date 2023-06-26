@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 // import { TbArrowBigUpFilled, TbArrowBigDownFilled } from "react-icons/tb"
 import { likePost } from "../../utilities/post-api"
@@ -15,7 +15,7 @@ export default function PostListItem({ post, user, setUser }) {
     // const [userLiked, setUserLiked] = useState(post.likes.includes(user._id));
     // const [userDisliked, setUserDisliked] = useState(post.dislikes.includes(user._id));
     const navigate = useNavigate()
-    const [userSaved, setUserSaved] = useState(user.savedResources.includes(post._id))
+    const [userSaved, setUserSaved] = useState(false)
 
     const handleShowPost = () => {
         navigate(`/show/${post._id}`)
@@ -52,6 +52,12 @@ export default function PostListItem({ post, user, setUser }) {
             console.error(err)
         }
     }
+
+    useEffect(() => {
+       if (user) {
+        setUserSaved(user.savedResources.includes(post._id))
+    }
+    }, [user])
 
     return (
         <div className="post-list-item">
