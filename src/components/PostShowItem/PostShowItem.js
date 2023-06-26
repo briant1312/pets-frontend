@@ -91,7 +91,7 @@ export default function PostShowItem({ resourceId }) {
           <div className="icons">
             <img src={message} alt="comment" height="20px" />
             <p className="comment-count">{post.comments.length} comment</p>
-            <SaveIcon />
+            <SaveIcon post={post} />
           </div>
           <div className="comment-section">
             <textarea
@@ -104,7 +104,6 @@ export default function PostShowItem({ resourceId }) {
             </button>
           </div>
           </div>
-          <div></div>
           <CommentList comments={post.comments} />
         </>
       )}
