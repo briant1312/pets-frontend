@@ -65,7 +65,7 @@ export default function PostListItem({ post, user, setUser }) {
                 <img className="post-img" src={grooming} alt="dog being groomed" />
 
                 <div className="text-container">
-                    <h2>{post.title}</h2>
+                    <h2><b>{post.title}</b></h2>
                     <p>{post.animal}</p>
 
                     <p>comments: {post.comments.length}</p>

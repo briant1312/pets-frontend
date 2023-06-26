@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import "./Home.scss"
 import headlineImg from '../../components/assets/headline-article-img.jpg'
 import groomingImg from '../../components/assets/grooming-img.jpg'
-import { FiArrowRight } from 'react-icons/fi'
+import saveIcon from '../../components/assets/Save.svg'
 
 export default function Home({ setUser, user }) {
     const [resources, setResources] = useState([])
@@ -61,19 +61,23 @@ export default function Home({ setUser, user }) {
             {user &&
                 <div className="dashboard">
                     <div className="profile-info">
-                        <p><b>Profile</b> @{user.userName}</p>
+                        <p><b>Profile</b> <img src={user.imageUrl} height="20px" alt="profile picture"/> @{user.userName}</p>
                         <p><b>Status Omega</b></p>
                     </div>
 
-                    <h2>Saved Resources</h2>
-                    <div className="resource-container">
-                        {resources.map(resource => {
-                            return <div key={resource._id} className="resource-item" onClick={() => handleShowPost(resource._id)}>
-                                <p>{resource.title}</p>
-                                <p>{resource.text}</p>
-                                <hr />
-                            </div>
-                        })}
+                    <div className="saved-section">
+                        <div className="save-heading-div">
+                        <img src={saveIcon} alt=""
+/>                        <h2>Saved Resources</h2>
+</div>
+                        <div className="resource-container">
+                            {resources.map(resource => {
+                                return <div key={resource._id} className="resource-item" onClick={() => handleShowPost(resource._id)}>
+                                    <img src={resource.imageUrl} alt="resource image" />
+                                    <p><b>{resource.title}</b></p>
+                                </div>
+                            })}
+                        </div>
                     </div>
                     <h2>Reflections</h2>
                     <div className="comments-container">
