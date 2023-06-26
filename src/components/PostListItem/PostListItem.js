@@ -6,6 +6,7 @@ import { dislikePost } from "../../utilities/post-api"
 import "./PostListItem.scss"
 import arrow from '../assets/arrow.svg'
 import grooming from '../assets/grooming.jpg'
+import { savePost } from "../../utilities/users-api"
 
 
 export default function PostListItem({ post, user }) {
@@ -38,6 +39,15 @@ export default function PostListItem({ post, user }) {
         }
     }
 
+    const handleSavePost = async (e) => {
+        e.stopPropagation()
+        try {
+            await savePost(post._id)
+        } catch(err) {
+            console.error(err)
+        }
+    }
+
     return (
         <div className="post-list-item">
             <div className="like-block-2">
@@ -54,6 +64,7 @@ export default function PostListItem({ post, user }) {
                     <p>{post.animal}</p>
 
                     <p>comments: {post.comments.length}</p>
+                    <span onClick={handleSavePost}>Save</span>
                 </div>
             </div>
         </div>
