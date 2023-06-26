@@ -26,7 +26,7 @@ export default function CommentListItem({ comment, user, setComments, comments }
 
             <p className="comment-text">{comment.text}</p>
 
-            {user._id === comment.owner._id && <button className="comment-delete-button" onClick={handleDeleteComment}>delete</button>}
+            {user && user._id === comment.owner._id && <button className="comment-delete-button" onClick={handleDeleteComment}>delete</button>}
         </div>
     )
 }

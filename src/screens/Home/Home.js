@@ -48,7 +48,7 @@ export default function Home({ setUser, user }) {
                     <div className="text">
                         <h1>Grooming</h1>
                         <p>Everything you need to know about grooming your pet, all in one place.</p>
-                        <Link to="/resources/grooming">
+                        <Link to="/resources/Grooming">
                             <button>Learn More About Pet Grooming →</button>
                         </Link>
                     </div>
@@ -61,15 +61,15 @@ export default function Home({ setUser, user }) {
             {user &&
                 <div className="dashboard">
                     <div className="profile-info">
-                        <p><b>Profile</b> <img src={user.imageUrl} height="20px" alt="profile picture"/> @{user.userName}</p>
+                        <p><b>Profile</b> <img src={user.imageUrl} height="20px" alt="profile picture" /> @{user.userName}</p>
                         <p><b>Status Omega</b></p>
                     </div>
 
                     <div className="saved-section">
                         <div className="save-heading-div">
-                        <img src={saveIcon} alt=""
-/>                        <h2>Saved Resources</h2>
-</div>
+                            <img src={saveIcon} alt=""
+                            />                        <h2>Saved Resources</h2>
+                        </div>
                         <div className="resource-container">
                             {resources.map(resource => {
                                 return <div key={resource._id} className="resource-item" onClick={() => handleShowPost(resource._id)}>
@@ -79,16 +79,23 @@ export default function Home({ setUser, user }) {
                             })}
                         </div>
                     </div>
+
+                    <div className="reflections-section">
+
                     <h2>Reflections</h2>
-                    <div className="comments-container">
-                        {comments.map(comment => {
-                            return <div key={comment._id} className="comment-item" >
-                                <span>Resource: </span>
-                                <Link key={comment.postId?._id} to={`/show/${comment.postId?._id}`}> {comment.postId?.title}</Link>
-                                <p>{comment.text}</p>
-                                <hr />
-                            </div>
-                        })}
+                    
+                        <div className="comments-container">
+                            {comments.map(comment => {
+                                return <div key={comment._id} className="comment-item" >
+                                    <div><span>Resource: </span>
+                                        <u>
+                                            <Link key={comment.postId?._id} to={`/show/${comment.postId?._id}`}> {comment.postId?.title}</Link>
+                                        </u>
+                                    </div>
+                                    <p>{comment.text}</p>
+                                </div>
+                            })}
+                        </div>
                     </div>
                 </div>
             }
