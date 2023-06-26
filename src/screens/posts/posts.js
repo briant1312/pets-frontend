@@ -2,6 +2,7 @@ import PostList from "../../components/PostList/PostList";
 import { useState, useEffect } from "react";
 import * as postsAPI from "../../utilities/post-api"
 import { useParams } from "react-router-dom";
+import './post.scss'
 
 export default function Posts({ user }) {
     const [query, setQuery] = useState("")
@@ -29,7 +30,7 @@ export default function Posts({ user }) {
     }, [resource])
 
     return (
-        <div>
+        <div className="posts-page">
             <div>
                 <form onSubmit={handleSubmit}>
                     <label>Search: </label>
