@@ -67,18 +67,21 @@ export default function PostShowItem({ resourceId }) {
                     <h1 className="post-title">{post.title}</h1>
                     <div className="like-component">
                     <div className="like-block">
-                    <img src={arrow} className="up-arrow" height="10px" onClick={handleLike} alt="like"/>
-                        {likeTotal}
-                    <img src={arrow} onClick={handleDislike} height="10px" alt="dislike"/>
+                     <img src={arrow} className="up-arrow" height="5px" onClick={handleLike} alt="like"/>
+                            {likeTotal}
+                         <img src={arrow} onClick={handleDislike} height="5px" alt="dislike"/>
                     </div>
                     <div>
-                    <img src={grooming} height="300vh" alt="groomed"/>
+                        <img src={grooming} height="300vh" alt="groomed"/>
                     </div>
                     </div>
-                    <p className="post-text">{post.text}</p>
-                    <textarea className="comment-box" value={commentText} onChange={(e) => setCommentText(e.target.value)}/>
+                        <p className="post-text">{post.text}</p>
+                        <div className="comment-section">
+                            <textarea className="comment-box" value={commentText} onChange={(e) => setCommentText(e.target.value)} />
+                                <button className="comment-button" onClick={handleCreateComment}>Post</button>
+                        </div>
                     <div>
-                    <button onClick={handleCreateComment}>Submit</button>
+                   
                     </div>
                     <CommentList comments ={post.comments}/>
                 </>
