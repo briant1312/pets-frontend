@@ -4,7 +4,7 @@ import * as postsAPI from "../../utilities/post-api"
 import { useParams } from "react-router-dom";
 import './post.scss'
 
-export default function Posts({ user }) {
+export default function Posts({ user, setUser }) {
     const [query, setQuery] = useState("")
     const [posts, setPosts] = useState([])
     const { resource } = useParams()
@@ -41,7 +41,7 @@ export default function Posts({ user }) {
 
             <div>
                 <h1>{resource}</h1>
-                <PostList posts={posts} user={user} />
+                <PostList posts={posts} user={user} setUser={setUser}/>
             </div>
         </div>
     )
