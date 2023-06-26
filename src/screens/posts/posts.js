@@ -2,14 +2,26 @@ import PostList from "../../components/PostList/PostList";
 import { useState, useEffect } from "react";
 import * as postsAPI from "../../utilities/post-api"
 import { useParams } from "react-router-dom";
+import './post.scss'
 
 export default function Posts({ user }) {
     const [query, setQuery] = useState("")
     const [posts, setPosts] = useState([])
     const { resource } = useParams()
 
+    const handleChange = (e) => {
+        setQuery(e.target.value)
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const posts = await postsAPI.index(resource, query)
+        setPosts(posts)
+        setQuery("")
+    }
+
     useEffect(() => {
-        async function loadPosts(){
+        async function loadPosts() {
             const posts = await postsAPI.index(resource, query)
             setPosts(posts)
         }
@@ -18,9 +30,19 @@ export default function Posts({ user }) {
     }, [resource])
 
     return (
-        <div>
-            <h1>{resource}</h1>
-            <PostList posts={posts} user={user} />
+        <div className="posts-page">
+            <div>
+                <form onSubmit={handleSubmit}>
+                    <label>Search: </label>
+                    <input onChange={handleChange} type="text" value={query}></input>
+                    <input type="submit" value="enter"></input>
+                </form>
+            </div>
+
+            <div>
+                <h1>{resource}</h1>
+                <PostList posts={posts} user={user} />
+            </div>
         </div>
     )
 }

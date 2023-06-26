@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom"
 // import { TbArrowBigUpFilled, TbArrowBigDownFilled } from "react-icons/tb"
 import { likePost } from "../../utilities/post-api"
 import { dislikePost } from "../../utilities/post-api"
+import "./PostListItem.scss"
+import arrow from '../assets/arrow.svg'
+import grooming from '../assets/grooming.jpg'
 
 
 export default function PostListItem({ post, user }) {
@@ -20,7 +23,7 @@ export default function PostListItem({ post, user }) {
         try {
             const updatedPost = await likePost(post._id)
             setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
-        } catch(err) {
+        } catch (err) {
             console.error(err)
         }
     }
@@ -30,22 +33,29 @@ export default function PostListItem({ post, user }) {
         try {
             const updatedPost = await dislikePost(post._id)
             setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
-        } catch(err) {
+        } catch (err) {
             console.error(err)
         }
     }
-    
+
     return (
-        <div onClick={handleShowPost}>
-            <h2>{post.title}</h2>
-            <p>{post.text}</p>
-            <p>{post.animal}</p>
-            <div>
-                <button onClick={handleLike}>Like</button>
+        <div className="post-list-item">
+            <div className="like-block-2">
+                <img src={arrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" />
                 {likeTotal}
-                <button onClick={handleDislike}>Disike</button>
+                <img src={arrow} onClick={handleDislike} height="10px" alt="dislike" />
             </div>
-            <p>comments: {post.comments.length}</p>
+
+            <div onClick={handleShowPost}  className="content-container">
+                <img src={grooming} alt="dog being groomed" />
+
+                <div className="text-container">
+                    <h2>{post.title}</h2>
+                    <p>{post.animal}</p>
+
+                    <p>comments: {post.comments.length}</p>
+                </div>
+            </div>
         </div>
     )
 }

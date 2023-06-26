@@ -1,4 +1,5 @@
 import PostListItem from "../PostListItem/PostListItem"
+import './PostList.scss'
 
 export default function PostList({ user, posts }) {
 

@@ -1,11 +1,13 @@
 :root {
 	--nav-blue: #6997C1;
+	--secondary-gray: #8E8E8E;
 }
 
 * {
 	box-sizing: border-box;
+	font-family: Arial;
 }
 
-.hidden{
+.hidden {
 	display: none;
 }
