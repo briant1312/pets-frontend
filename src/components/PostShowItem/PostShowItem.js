@@ -83,7 +83,7 @@ export default function PostShowItem({ resourceId }) {
                     <div>
                    
                     </div>
-                    {/* <CommentList comments ={post.comments}/> */}
+                    <CommentList comments ={post.comments}/>
                 </>
             }
         </div>
