@@ -67,9 +67,9 @@ export default function PostShowItem({ resourceId }) {
                     <h1 className="post-title">{post.title}</h1>
                     <div className="like-component">
                     <div className="like-block">
-                    <img src={arrow} className="up-arrow" height="10px" onClick={handleLike} alt="like"/>
+                    <img src={arrow} className="up-arrow" height="5px" onClick={handleLike} alt="like"/>
                         {likeTotal}
-                    <img src={arrow} onClick={handleDislike} height="10px" alt="dislike"/>
+                    <img src={arrow} onClick={handleDislike} height="5px" alt="dislike"/>
                     </div>
                     <div>
                     <img src={grooming} height="300vh" alt="groomed"/>
@@ -80,7 +80,7 @@ export default function PostShowItem({ resourceId }) {
                     <div>
                     <button onClick={handleCreateComment}>Submit</button>
                     </div>
-                    <CommentList comments ={post.comments}/>
+                    {/* <CommentList comments ={post.comments}/> */}
                 </>
             }
         </div>
