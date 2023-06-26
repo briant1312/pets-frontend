@@ -9,11 +9,14 @@ import message from "../assets/Message.svg";
 import grooming from "../assets/grooming.jpg";
 import SaveIcon from "../SaveIcon/SaveIcon";
 import "./PostShowItem.scss";
+import { savePost } from "../../utilities/users-api";
 
-export default function PostShowItem({ resourceId }) {
+export default function PostShowItem({ resourceId, user, setUser }) {
   const [post, setPost] = useState(null);
   const [likeTotal, setLikeTotal] = useState(0);
   const [commentText, setCommentText] = useState("");
+  const [userSaved, setUserSaved] = useState(user.savedResources.includes(resourceId))
+  const [comments, setComments] = useState([])
 
   useEffect(() => {
     const getPost = async () => {
@@ -21,6 +24,7 @@ export default function PostShowItem({ resourceId }) {
         const selectedPost = await show(resourceId);
         setPost(selectedPost);
         setLikeTotal(selectedPost.likes.length - selectedPost.dislikes.length);
+        setComments(selectedPost.comments)
       } catch (err) {
         console.error(err);
       }
@@ -53,11 +57,23 @@ export default function PostShowItem({ resourceId }) {
     try {
       const updatedPost = await createComment(post._id, { text: commentText });
       setPost(updatedPost);
+      setComments(updatedPost.comments)
       setCommentText("");
     } catch (err) {
       console.error(err);
     }
   };
+
+  const handleSavePost = async (e) => {
+    e.stopPropagation()
+    try {
+      const updatedUser = await savePost(post._id)
+      setUser(updatedUser)
+      setUserSaved(updatedUser.savedResources.includes(resourceId))
+    } catch(err) {
+      console.error(err)
+    }
+  }
 
   return (
     <div className="post-item">
@@ -91,7 +107,7 @@ export default function PostShowItem({ resourceId }) {
           <div className="icons">
             <img src={message} alt="comment" height="20px" />
             <p className="comment-count">{post.comments.length} comment</p>
-            <SaveIcon post={post} />
+            <span onClick={handleSavePost}><SaveIcon  post={post} userSaved={userSaved}/></span>
           </div>
           <div className="comment-section">
             <textarea
@@ -104,7 +120,7 @@ export default function PostShowItem({ resourceId }) {
             </button>
           </div>
           </div>
-          <CommentList comments={post.comments} />
+          <CommentList setUser={setUser} comments={comments} setComments={setComments} user={user}/>
         </>
       )}
     </div>

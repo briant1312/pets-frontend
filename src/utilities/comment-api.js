@@ -11,10 +11,10 @@ export async function createComment(postId, comment) {
     }
 }
 
-export async function deleteComment(postId, commentId) {
+export async function deleteComment(commentId) {
     try {
-        await sendRequest(`${BASE_URL}/${postId}`, 'DELETE', commentId)
-        return 
+        const user = await sendRequest(`${BASE_URL}/${commentId}`, 'DELETE')
+        return user
     } catch (err) {
         console.error(err)
     }

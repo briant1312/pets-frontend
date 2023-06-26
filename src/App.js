@@ -36,10 +36,10 @@ function App() {
                 element={<LogInForm setUser={setUser}/>}/>
         <Route
                 path="resources/:resource"
-                element={<Posts user={user}/>}/>
+                element={<Posts user={user} setUser={setUser}/>}/>
         <Route
                 path="show/:resourceId"
-                element={<PostShow />}/>
+                element={<PostShow user={user} setUser={setUser}/>}/>
         <Route
                 path="profile"
                 element={<Profile user={user}/>}/>

@@ -7,13 +7,15 @@ import "./PostListItem.scss"
 import arrow from '../assets/arrow.svg'
 import grooming from '../assets/grooming.jpg'
 import { savePost } from "../../utilities/users-api"
+import SaveIcon from "../SaveIcon/SaveIcon"
 
 
-export default function PostListItem({ post, user }) {
+export default function PostListItem({ post, user, setUser }) {
     const [likeTotal, setLikeTotal] = useState(post.likes.length - post.dislikes.length)
     // const [userLiked, setUserLiked] = useState(post.likes.includes(user._id));
     // const [userDisliked, setUserDisliked] = useState(post.dislikes.includes(user._id));
     const navigate = useNavigate()
+    const [userSaved, setUserSaved] = useState(user.savedResources.includes(post._id))
 
     const handleShowPost = () => {
         navigate(`/show/${post._id}`)
@@ -42,7 +44,9 @@ export default function PostListItem({ post, user }) {
     const handleSavePost = async (e) => {
         e.stopPropagation()
         try {
-            await savePost(post._id)
+            const updatedUser = await savePost(post._id)
+            setUser(updatedUser)
+            setUserSaved(updatedUser.savedResources.includes(post._id))
         } catch(err) {
             console.error(err)
         }
@@ -64,7 +68,7 @@ export default function PostListItem({ post, user }) {
                     <p>{post.animal}</p>
 
                     <p>comments: {post.comments.length}</p>
-                    <span onClick={handleSavePost}>Save</span>
+                    <span onClick={handleSavePost}><SaveIcon user={user} setUser={setUser} userSaved={userSaved} /></span>
                 </div>
             </div>
         </div>
