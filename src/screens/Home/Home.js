@@ -84,7 +84,7 @@ export default function Home({ setUser, user }) {
 
                     <h2>Reflections</h2>
                     
-                        <div className="comments-container">
+                        <div className="comments-container-home">
                             {comments.map(comment => {
                                 return <div key={comment._id} className="comment-item" >
                                     <div><span>Resource: </span>
