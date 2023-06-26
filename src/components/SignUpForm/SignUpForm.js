@@ -1,6 +1,7 @@
 import { signUp } from "../../utilities/users-service"
 import { useState } from 'react'
 import './SignUpForm.scss'
+import { useNavigate } from "react-router-dom"
 
 
 export default function SignUpForm({ setUser }) {
@@ -11,6 +12,9 @@ export default function SignUpForm({ setUser }) {
         confirm: '',
         error: ''
     })
+
+    const navigate = useNavigate()
+
 
     const handleChange = (event) => 
         setState({
@@ -29,6 +33,7 @@ export default function SignUpForm({ setUser }) {
             // wait for a response back from the server
             const user = await signUp(formData)
             setUser(user)
+            navigate('/')
         } catch (error) {
             console.error(error)
             setState({
