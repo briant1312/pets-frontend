@@ -9,7 +9,7 @@ const cats = require('../../data/cats.json')
 const dogs = require('../../data/dogs.json')
 
 
-export default function NavBar({ setUser }) {
+export default function NavBar({ setUser, user }) {
     const resources = ["Training", "Nutrition", "Healthcare", "Grooming", "Other"]
 
     const [openCatDropdown, setOpenCatDropdown] = useState(false)
@@ -122,7 +122,11 @@ export default function NavBar({ setUser }) {
                         </div>
                     </div>
 
-                    <Link to="/login"><h1>Register/Sign In</h1></Link>
+                    {user ? <h1 onClick={handleSignOut} className="log-out-link">Log Out</h1> : <Link to="/login"><h1>Register/Sign In</h1></Link> }
+
+                    
+
+                    
                 </div>
 
             </div>

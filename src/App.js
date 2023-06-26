@@ -17,7 +17,7 @@ function App() {
   
   return (
     <div className="App">
-        <NavBar setUser={setUser}/>
+        <NavBar user={user} setUser={setUser}/>
       <Routes>
         <Route 
                 path="/" 

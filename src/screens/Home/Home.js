@@ -1,10 +1,14 @@
-import SignOut  from "../../components/SignOutForm/SignOutForm.js"
+import SignOut from "../../components/SignOutForm/SignOutForm.js"
 import { useEffect, useState } from "react"
 import { getSavedResources } from "../../utilities/users-api.js"
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
+import "./Home.scss"
+import headlineImg from '../../components/assets/headline-article-img.jpg'
+import groomingImg from '../../components/assets/grooming-img.jpg'
+import { FiArrowRight } from 'react-icons/fi'
 
-export default function Home({setUser, user}){
+export default function Home({ setUser, user }) {
     const [resources, setResources] = useState([])
     const [comments, setComments] = useState([])
 
@@ -16,10 +20,10 @@ export default function Home({setUser, user}){
                 const resources = await getSavedResources()
                 setResources(resources.savedResources)
                 setComments(resources.comments)
-            } catch(err) {
+            } catch (err) {
                 console.error(err)
             }
-        } 
+        }
         getResources()
     }, [user])
 
@@ -29,17 +33,45 @@ export default function Home({setUser, user}){
 
     return (
         <div>
-            <h1>Home</h1>
+
+            <div className="headline-div">
+                <div className="headline-article-container">
+                    <div className="text">
+                        <h1>Today's Headline Article</h1>
+                        <p>How to help your pet beat the summer heat</p>
+                    </div>
+                    <img className="home-img" src={headlineImg} alt="dog" />
+                </div>
+
+                <div className="grooming-article-container">
+                    <img className="home-img" src={groomingImg} alt="dog" />
+                    <div className="text">
+                        <h1>Grooming</h1>
+                        <p>Everything you need to know about grooming your pet, all in one place.</p>
+                        <Link to="/resources/grooming">
+                            <button>Learn More About Pet Grooming →</button>
+                        </Link>
+                    </div>
+
+                </div>
+
+            </div>
+
+
             {user &&
-                <>
-                    <p>Profile: {user.userName}</p>
+                <div className="dashboard">
+                    <div className="profile-info">
+                        <p><b>Profile</b> @{user.userName}</p>
+                        <p><b>Status Omega</b></p>
+                    </div>
+
                     <h2>Saved Resources</h2>
                     <div className="resource-container">
                         {resources.map(resource => {
                             return <div key={resource._id} className="resource-item" onClick={() => handleShowPost(resource._id)}>
                                 <p>{resource.title}</p>
                                 <p>{resource.text}</p>
-                                <hr/>
+                                <hr />
                             </div>
                         })}
                     </div>
@@ -50,13 +82,12 @@ export default function Home({setUser, user}){
                                 <span>Resource: </span>
                                 <Link key={comment.postId?._id} to={`/show/${comment.postId?._id}`}> {comment.postId?.title}</Link>
                                 <p>{comment.text}</p>
-                                <hr/>
+                                <hr />
                             </div>
                         })}
                     </div>
-                </>
+                </div>
             }
-            <SignOut setUser={setUser}/>
-
         </div>
-    )}
+    )
+}

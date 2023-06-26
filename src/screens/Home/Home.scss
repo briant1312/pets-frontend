@@ -1,0 +1,67 @@
+.dashboard {
+    padding: 4rem 7rem;
+}
+
+.headline-div{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.headline-article-container {
+    display: flex;
+
+    .text{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #c19369;
+        padding: 1rem;
+
+        h1{
+            margin-bottom: 0;
+        }
+    }
+
+    .home-img{
+        width: 50%;
+        object-fit: cover;
+    }
+}
+
+.grooming-article-container {
+    display: flex;
+
+    .text{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #c19369;
+        padding: 1rem;
+
+        h1{
+            margin-bottom: 0;
+        }
+    }
+
+    .home-img{
+        width: 50%;
+        object-fit: cover;
+    }
+}
+
+.profile-info{
+    border: 1px solid red;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    p{
+        margin: 0;
+        font-size: 20px;
+    }
+}
