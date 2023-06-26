@@ -63,8 +63,8 @@ export default function NavBar({ setUser }) {
                 <div className="nav-categories">
 
                     <div>
-                        <div className="cats-nav">
-                            <h1 onClick={handleCatHeaderClick}>Cats</h1>
+                        <div onClick={handleCatHeaderClick} className="cats-nav">
+                            <h1>Cats</h1>
                             <img src={arrow}
                                 className="arrow" />
                         </div>
@@ -81,8 +81,8 @@ export default function NavBar({ setUser }) {
                     </div>
 
                     <div>
-                        <div className="dogs-nav">
-                            <h1 onClick={handleDogHeaderClick}>Dogs</h1>
+                        <div onClick={handleDogHeaderClick} className="dogs-nav">
+                            <h1>Dogs</h1>
                             <img src={arrow}
                                 className="arrow" />
                         </div>
@@ -99,8 +99,8 @@ export default function NavBar({ setUser }) {
                     </div>
 
                     <div>
-                        <div className="resources-nav">
-                            <h1 onClick={handleResourceHeaderClick}>Resources</h1>
+                        <div onClick={handleResourceHeaderClick} className="resources-nav">
+                            <h1>Resources</h1>
                             <img src={arrow}
                                 className="arrow" />
                         </div>

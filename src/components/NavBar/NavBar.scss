@@ -1,11 +1,11 @@
 .outer-div {
     // border: 1px solid red;
     background-color: var(--nav-blue);
-    height: 8rem;
+    height: 10rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem 0 2rem;
 }
 
 .nav-categories {
@@ -16,11 +16,12 @@
     // border: 1px solid red;
     height: 80%;
     width: 100%;
-    max-width: 70vw;
+    max-width: 75vw;
 }
 
 .logo {
-    height: 120px;
+    height: 150px;
+    margin-bottom: 2rem;
     // border: 1px solid red;
 }
 
@@ -28,11 +29,20 @@
     height: 15px;
 }
 
+h1 {
+    font-size: 30px;
+    // margin-bottom: 0;
+}
+
 .cats-nav, .dogs-nav, .resources-nav {
     // border: 1px solid red;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.5rem;
+
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .cat-select, .dog-select, .resources-select {
