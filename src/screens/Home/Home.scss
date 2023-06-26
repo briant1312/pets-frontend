@@ -2,7 +2,7 @@
     padding: 4rem 7rem;
 }
 
-.headline-div{
+.headline-div {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -12,7 +12,7 @@
 .headline-article-container {
     display: flex;
 
-    .text{
+    .text {
         width: 50%;
         display: flex;
         flex-direction: column;
@@ -20,12 +20,12 @@
         background-color: #c19369;
         padding: 1rem;
 
-        h1{
+        h1 {
             margin-bottom: 0;
         }
     }
 
-    .home-img{
+    .home-img {
         width: 50%;
         object-fit: cover;
     }
@@ -34,7 +34,7 @@
 .grooming-article-container {
     display: flex;
 
-    .text{
+    .text {
         width: 50%;
         display: flex;
         flex-direction: column;
@@ -42,26 +42,62 @@
         background-color: #c19369;
         padding: 1rem;
 
-        h1{
+        h1 {
             margin-bottom: 0;
         }
     }
 
-    .home-img{
+    .home-img {
         width: 50%;
         object-fit: cover;
     }
 }
 
-.profile-info{
-    border: 1px solid red;
+.profile-info {
+    // border: 1px solid red;
     width: fit-content;
     display: flex;
     flex-direction: column;
     gap: 5px;
 
-    p{
+    p {
         margin: 0;
         font-size: 20px;
+    }
+}
+
+.saved-section {
+    display: flex;
+    margin: 3rem;
+}
+
+.save-heading-div {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+
+    h2{
+        margin-top: 0;
+    }
+}
+
+.resource-container {
+    border: 1px solid red;
+    width: 60vw;
+
+    img {
+        height: 80px;
+        border-radius: 1rem;
+    }
+
+    .resource-item {
+        border: 1px solid blue;
+        display: flex;
+        gap: 1rem;
+        background-color: #dbdbdb;
+        width: 100%;
+        border-radius: 1.2rem;
+        padding: 1rem;
+        box-shadow: 5px 5px 6px 1px rgba(142, 142, 142, 0.5);
     }
 }
