@@ -1,0 +1,43 @@
+.comment-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 60rem;
+    background-color: #dbdbdb;
+    border: 1px solid black ;
+    border-radius: 10px;
+    height: fit-content;
+    width: 80vw;
+    min-height: 80px;
+    box-shadow: 5px 5px 7px 1px rgba(142, 142, 142, 0.5);
+    padding: 1rem;
+}
+
+.comment-delete-button {
+    position: absolute;
+    background-color: #dbdbdb;
+    border: 1px solid black;
+    display: flex;
+    padding: 2px 20px;
+    width: fit-content;
+    bottom: 5px;
+    right: 10px;  
+}
+
+.owner-info {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+
+    img {
+        border-radius: 50%;
+    }
+
+    p {
+        margin: 0;
+    }
+}
+
+.comment-text {
+    margin-left: 40px;
+    width: 70vw;
+}

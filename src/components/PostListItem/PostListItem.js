@@ -62,14 +62,14 @@ export default function PostListItem({ post, user, setUser }) {
             </div>
 
             <div onClick={handleShowPost}  className="content-container">
-                <img src={grooming} alt="dog being groomed" />
+                <img className="post-img" src={grooming} alt="dog being groomed" />
 
                 <div className="text-container">
                     <h2>{post.title}</h2>
                     <p>{post.animal}</p>
 
                     <p>comments: {post.comments.length}</p>
-                    <span onClick={handleSavePost}><SaveIcon user={user} setUser={setUser} userSaved={userSaved} /></span>
+                    <span className="save-icon" onClick={handleSavePost}><SaveIcon user={user} setUser={setUser} userSaved={userSaved} /></span>
                 </div>
             </div>
         </div>

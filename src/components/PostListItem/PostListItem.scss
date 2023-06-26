@@ -41,7 +41,7 @@
         cursor: pointer
     }
 
-    img{
+    .post-img{
         height: 80px;
         border-radius: 1rem;
     }
@@ -52,4 +52,8 @@
             font-size: 20px;
         }
     }
+}
+
+.save-icon {
+    height: 20px;
 }

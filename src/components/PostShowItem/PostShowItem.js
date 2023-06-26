@@ -121,7 +121,10 @@ export default function PostShowItem({ resourceId, user, setUser }) {
             </button>
           </div>
           </div>
-          <CommentList setUser={setUser} comments={comments} setComments={setComments} user={user}/>
+          
+          <div className="post-comments">
+            <CommentList setUser={setUser} comments={comments} setComments={setComments} user={user}/>
+          </div>
         </>
       )}
     </div>
