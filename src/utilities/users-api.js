@@ -19,6 +19,23 @@ export async function logIn(credentials) {
     }
 }
 
+export async function getSavedResources() {
+    try {
+        return sendRequest(`${BASE_URL}/saved-resources`)
+    } catch(err) {
+        console.error(err)
+    }
+}
+
+
+export async function savePost(postId) {
+    try {
+        return sendRequest(`${BASE_URL}/save-post/${postId}`)
+    } catch(err) {
+        console.error(err)
+    }
+}
+
 export default async function sendRequest(url, method='GET', payload=null) {
     try {
 

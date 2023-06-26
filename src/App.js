@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route 
                 path="/" 
-                element={<Home setUser={setUser}/>}/>
+                element={<Home user={user} setUser={setUser}/>}/>
         <Route 
                 path="/dog-breeds/:dogId" 
                 element={<DogInfoCard />}/>
