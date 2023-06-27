@@ -62,7 +62,7 @@ export default function Home({ setUser, user }) {
             {user &&
                 <div className="dashboard">
                     <div className="profile-info">
-                        <p><b>Profile</b> <img src={user.imageUrl} height="20px" alt="profile picture" /> @{user.userName}</p>
+                        <p><b>Profile</b> <img src={user.imageUrl} height="30px" alt="profile picture" /> @{user.userName}</p>
                         <p><b>Status Omega</b></p>
                     </div>
 
