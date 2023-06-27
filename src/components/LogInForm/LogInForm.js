@@ -65,7 +65,7 @@ export default function LogInForm({ setUser }) {
                 />
                 <button type="submit">Log In</button>
             </form>
-            <p>Need an account? <Link to="/signup">Register</Link></p>
+            <p>Need an account? <Link to="/signup">Create an account</Link></p>
             <p className="error-message">{error}</p>
         </div>
     )
