@@ -5,6 +5,7 @@ import { likePost } from "../../utilities/post-api"
 import { dislikePost } from "../../utilities/post-api"
 import "./PostListItem.scss"
 import arrow from '../assets/arrow.svg'
+import redArrow from '../assets/red-arrow.svg'
 import grooming from '../assets/grooming.jpg'
 import { savePost } from "../../utilities/users-api"
 import SaveIcon from "../SaveIcon/SaveIcon"
@@ -16,6 +17,9 @@ export default function PostListItem({ post, user, setUser }) {
     // const [userDisliked, setUserDisliked] = useState(post.dislikes.includes(user._id));
     const navigate = useNavigate()
     const [userSaved, setUserSaved] = useState(false)
+    const [isLiked, setisLiked] = useState(false)
+    const [isDisliked, setIsDisliked] = useState(false)
+    
 
     const handleShowPost = () => {
         navigate(`/show/${post._id}`)
@@ -26,6 +30,8 @@ export default function PostListItem({ post, user, setUser }) {
         try {
             const updatedPost = await likePost(post._id)
             setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
+            setIsDisliked(false)
+            setisLiked(!isLiked)
         } catch (err) {
             console.error(err)
         }
@@ -36,6 +42,8 @@ export default function PostListItem({ post, user, setUser }) {
         try {
             const updatedPost = await dislikePost(post._id)
             setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
+            setisLiked(false)
+            setIsDisliked(!isDisliked)
         } catch (err) {
             console.error(err)
         }
@@ -45,29 +53,34 @@ export default function PostListItem({ post, user, setUser }) {
         e.stopPropagation()
         try {
             const updatedUser = await savePost(post._id)
-            if(!updatedUser) return
+            if (!updatedUser) return
             setUser(updatedUser)
             setUserSaved(updatedUser.savedResources.includes(post._id))
-        } catch(err) {
+        } catch (err) {
             console.error(err)
         }
     }
 
     useEffect(() => {
-       if (user) {
-        setUserSaved(user.savedResources.includes(post._id))
-    }
+        if (user) {
+            setUserSaved(user.savedResources.includes(post._id))
+        }
     }, [user])
 
     return (
         <div className="post-list-item">
             <div className="like-block-2">
-                <img src={arrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" />
+                {isLiked ? <img src={redArrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" /> :
+                <img src={arrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" />}
+
+
                 {likeTotal}
-                <img src={arrow} onClick={handleDislike} height="10px" alt="dislike" />
+
+                {isDisliked ? <img src={redArrow} onClick={handleDislike} height="10px" alt="dislike" /> : <img src={arrow} onClick={handleDislike} height="10px" alt="dislike" />}
+                
             </div>
 
-            <div onClick={handleShowPost}  className="content-container">
+            <div onClick={handleShowPost} className="content-container">
                 <img className="post-img" src={grooming} alt="dog being groomed" />
 
                 <div className="text-container">
