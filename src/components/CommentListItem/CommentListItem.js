@@ -14,7 +14,7 @@ export default function CommentListItem({ comment, user, setComments, comments }
     }
 
     return (
-        <div className="comment-container">
+        <div className="comment-container" >
             <div className="owner-info">
                 <img src={comment.owner.imageUrl} height="40px" alt="" />
 

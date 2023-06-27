@@ -55,5 +55,12 @@
 }
 
 .save-icon {
+    display: inline-block;
     height: 20px;
+    width: fit-content; 
+}
+
+.disabled {
+    cursor: default !important;
+    opacity: 0.3;
 }

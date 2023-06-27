@@ -7,7 +7,6 @@ import { createComment } from "../../utilities/comment-api";
 import arrow from "../assets/arrow.svg";
 import redArrow from '../assets/red-arrow.svg'
 import message from "../assets/Message.svg";
-import grooming from "../assets/grooming.jpg";
 import SaveIcon from "../SaveIcon/SaveIcon";
 import "./PostShowItem.scss";
 import { savePost } from "../../utilities/users-api";
@@ -25,9 +24,13 @@ export default function PostShowItem({ resourceId, user, setUser }) {
     const getPost = async () => {
       try {
         const selectedPost = await show(resourceId);
-        setPost(selectedPost);
-        setLikeTotal(selectedPost.likes.length - selectedPost.dislikes.length);
-        setComments(selectedPost.comments)
+        if(selectedPost) {
+          setIsDisliked(selectedPost.dislikes.includes(user?._id))
+          setisLiked(selectedPost.likes.includes(user?._id))
+          setPost(selectedPost);
+          setComments(selectedPost.comments)
+          setLikeTotal(selectedPost.likes.length - selectedPost.dislikes.length);
+        }
       } catch (err) {
         console.error(err);
       }
@@ -38,16 +41,22 @@ export default function PostShowItem({ resourceId, user, setUser }) {
   useEffect(() => {
     if (user) {
       setUserSaved(user.savedResources.includes(resourceId))
+    } else {
+      setIsDisliked(false)
+      setisLiked(false)
+      setUserSaved(false)
     }
   }, [user])
 
   const handleLike = async (e) => {
     e.stopPropagation();
+    if(!user) return
     try {
       const updatedPost = await likePost(post._id);
+      if(!updatedPost) return
       setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length);
-      setIsDisliked(false)
-      setisLiked(!isLiked)
+      setIsDisliked(updatedPost.dislikes.includes(user._id))
+      setisLiked(updatedPost.likes.includes(user._id))
     } catch (err) {
       console.error(err);
     }
@@ -55,11 +64,13 @@ export default function PostShowItem({ resourceId, user, setUser }) {
 
   const handleDislike = async (e) => {
     e.stopPropagation();
+    if(!user) return
     try {
       const updatedPost = await dislikePost(post._id);
+      if(!updatedPost) return
       setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length);
-      setisLiked(false)
-      setIsDisliked(!isDisliked)
+      setIsDisliked(updatedPost.dislikes.includes(user._id))
+      setisLiked(updatedPost.likes.includes(user._id))
     } catch (err) {
       console.error(err);
     }
@@ -67,6 +78,7 @@ export default function PostShowItem({ resourceId, user, setUser }) {
 
   const handleCreateComment = async (e) => {
     e.preventDefault();
+    if(!user) return
     try {
       const updatedPost = await createComment(post._id, { text: commentText });
       if (updatedPost) {
@@ -81,6 +93,7 @@ export default function PostShowItem({ resourceId, user, setUser }) {
 
   const handleSavePost = async (e) => {
     e.stopPropagation()
+    if(!user) return
     try {
       const updatedUser = await savePost(post._id)
       if (!updatedUser) return
@@ -99,12 +112,13 @@ export default function PostShowItem({ resourceId, user, setUser }) {
           <div className="like-component">
             <div className="like-block">
               {isLiked ? <img src={redArrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" /> :
-                <img src={arrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" />}
+                <img src={arrow} className={ user ? "up-arrow" : "up-arrow disabled"} height="10px" onClick={handleLike} alt="like" />}
 
 
               {likeTotal}
 
-              {isDisliked ? <img src={redArrow} onClick={handleDislike} height="10px" alt="dislike" /> : <img src={arrow} onClick={handleDislike} height="10px" alt="dislike" />}
+              {isDisliked ? <img src={redArrow} className="down-arrow" onClick={handleDislike} height="10px" alt="dislike" /> :
+                <img src={arrow} onClick={handleDislike} className={ user ? "down-arrow" : "down-arrow disabled"} height="10px" alt="dislike" />}
 
             </div>
             <div>
@@ -117,7 +131,7 @@ export default function PostShowItem({ resourceId, user, setUser }) {
             <div className="icons">
               <img src={message} alt="comment" height="20px" />
               <p className="comment-count">{post.comments.length} comment</p>
-              <span onClick={handleSavePost}><SaveIcon post={post} userSaved={userSaved} /></span>
+              <span className={user ? "save-icon" : "save-icon disabled"} onClick={handleSavePost}><SaveIcon post={post} userSaved={userSaved} /></span>
             </div>
             <div className="comment-section">
               <textarea
@@ -125,7 +139,7 @@ export default function PostShowItem({ resourceId, user, setUser }) {
                 value={commentText}
                 onChange={(e) => setCommentText(e.target.value)}
               />
-              <button className="comment-button" onClick={handleCreateComment}>
+              <button className={user ? "comment-button" : "comment-button disabled"} onClick={handleCreateComment} >
                 Post
               </button>
             </div>

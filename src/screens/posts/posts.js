@@ -32,7 +32,7 @@ export default function Posts({ user, setUser }) {
     return (
         <div className="posts-page">
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="search-input">
                     <label>Search: </label>
                     <input onChange={handleChange} type="text" value={query}></input>
                     <input type="submit" value="enter"></input>
