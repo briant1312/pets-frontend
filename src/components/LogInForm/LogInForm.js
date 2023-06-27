@@ -19,16 +19,18 @@ export default function LogInForm({setUser}){
             [event.target.name]: event.target.value,
         })
     }
-
     async function handleSubmit (event){
         event.preventDefault()
         try{
             const userToLogIn = await logIn(credentials)
-            if(!userToLogIn) return
-            window.localStorage.setItem('token', userToLogIn)
-            const user = getUser()
-            setUser(user)
-            navigate('/')
+            if(userToLogIn) {
+                window.localStorage.setItem('token', userToLogIn)
+                const user = getUser()
+                setUser(user)
+                navigate('/')
+            } else {
+                throw new Error("")
+            }
         } catch {
             setError('Error Loggin In')
         }

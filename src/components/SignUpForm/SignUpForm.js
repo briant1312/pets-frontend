@@ -1,7 +1,7 @@
 import { signUp } from "../../utilities/users-service"
 import { useState } from 'react'
 import './SignUpForm.scss'
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 export default function SignUpForm({ setUser }) {
@@ -73,7 +73,7 @@ export default function SignUpForm({ setUser }) {
                 />
                 <button type="submit">Sign Up</button>
             </form>
-            <p>Have an account? <a href="/login">Sign in</a></p>
+            <p>Have an account? <Link to="/login">Sign in</Link></p>
             <p className="error-message">{state.error}</p>
         </div>
     )
