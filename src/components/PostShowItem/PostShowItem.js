@@ -6,6 +6,7 @@ import { dislikePost } from "../../utilities/post-api";
 import { createComment } from "../../utilities/comment-api";
 import arrow from "../assets/arrow.svg";
 import redArrow from '../assets/red-arrow.svg'
+import greenArrow from '../assets/green-arrow.png'
 import message from "../assets/Message.svg";
 import SaveIcon from "../SaveIcon/SaveIcon";
 import "./PostShowItem.scss";
@@ -111,7 +112,7 @@ export default function PostShowItem({ resourceId, user, setUser }) {
           <h1 className="post-title">{post.title}</h1>
           <div className="like-component">
             <div className="like-block">
-              {isLiked ? <img src={redArrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" /> :
+              {isLiked ? <img src={greenArrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" /> :
                 <img src={arrow} className={ user ? "up-arrow" : "up-arrow disabled"} height="10px" onClick={handleLike} alt="like" />}
 
 

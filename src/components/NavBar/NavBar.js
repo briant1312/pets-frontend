@@ -58,7 +58,7 @@ export default function NavBar({ setUser, user }) {
             <div className="outer-div">
 
                 <Link to="/"><img src={logo} className="logo" /></Link>
-                
+
 
                 <div className="nav-categories">
 
@@ -71,12 +71,13 @@ export default function NavBar({ setUser, user }) {
 
                         <div className={`cat-dropdown ${openCatDropdown ? '' : 'hidden'}`}>
                             {cats.map((cat) => (
-                                <Link 
-                                    to={`cat-breeds/${cat.name}`} 
+                                <Link
+                                    className="breed-link"
+                                    to={`cat-breeds/${cat.name}`}
                                     onClick={handleLinkClick}
                                     key={cat.id}
-                                    >
-                                        {cat.name}
+                                >
+                                    {cat.name}
                                 </Link>
                             ))}
                         </div>
@@ -91,12 +92,13 @@ export default function NavBar({ setUser, user }) {
 
                         <div className={`dog-dropdown ${openDogDropdown ? '' : 'hidden'}`}>
                             {dogs.map((dog) => (
-                                <Link 
+                                <Link
+                                    className="breed-link"
                                     to={`dog-breeds/${dog.name}`}
                                     onClick={handleLinkClick}
                                     key={dog.id}
-                                    >
-                                        {dog.name}
+                                >
+                                    {dog.name}
                                 </Link>
                             ))}
                         </div>
@@ -111,7 +113,7 @@ export default function NavBar({ setUser, user }) {
 
                         <div className={`resource-dropdown ${openResourceDropdown ? '' : 'hidden'}`}>
                             {resources.map((resource) => (
-                                <Link to={`/resources/${resource}`} key={resource} onClick={handleLinkClick}>{resource}</Link>
+                                <Link to={`/resources/${resource}`} className="breed-link" key={resource} onClick={handleLinkClick}>{resource}</Link>
                             ))}
 
                             {/* <Link to="resources/training">Training</Link>
@@ -124,9 +126,6 @@ export default function NavBar({ setUser, user }) {
 
                     {user ? <h1 onClick={handleSignOut} className="log-out-link">Log Out</h1> : <Link to="/login"><h1>Sign Up/Sign In</h1></Link> }
 
-                    
-
-                    
                 </div>
 
             </div>
