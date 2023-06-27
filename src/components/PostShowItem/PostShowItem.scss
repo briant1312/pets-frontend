@@ -7,6 +7,10 @@
     rotate: 180deg;
 }
 
+.up-arrow, .down-arrow {
+	cursor: pointer;
+}
+
 .post-item {
     display: flex;
     align-items: center;
@@ -56,6 +60,7 @@ button {
     min-height: 80px;
     resize: vertical;
     box-shadow: 5px 5px 7px 1px rgba(142, 142, 142, 0.5);
+	padding: 10px;
 }
 
 .comment-section {
@@ -88,4 +93,8 @@ button {
 
 .comment-count {
     margin-top: 0;
+}
+
+.save-icon {
+	cursor: pointer;
 }

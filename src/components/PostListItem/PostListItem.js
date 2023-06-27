@@ -24,6 +24,7 @@ export default function PostListItem({ post, user, setUser }) {
 
     const handleLike = async (e) => {
         e.stopPropagation()
+        if(!user) return
         try {
             const updatedPost = await likePost(post._id)
             if(!updatedPost) return
@@ -37,6 +38,7 @@ export default function PostListItem({ post, user, setUser }) {
 
     const handleDislike = async (e) => {
         e.stopPropagation()
+        if(!user) return
         try {
             const updatedPost = await dislikePost(post._id)
             setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
@@ -49,6 +51,7 @@ export default function PostListItem({ post, user, setUser }) {
 
     const handleSavePost = async (e) => {
         e.stopPropagation()
+        if(!user) return
         try {
             const updatedUser = await savePost(post._id)
             if (!updatedUser) return
@@ -75,12 +78,12 @@ export default function PostListItem({ post, user, setUser }) {
         <div className="post-list-item">
             <div className="like-block-2">
                 {isLiked ? <img src={redArrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" /> :
-                <img src={arrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" />}
+                <img src={arrow} className={user ? "up-arrow" : "up-arrow disabled"} height="10px" onClick={handleLike} alt="like" />}
 
 
                 {likeTotal}
 
-                {isDisliked ? <img src={redArrow} onClick={handleDislike} height="10px" alt="dislike" /> : <img src={arrow} onClick={handleDislike} height="10px" alt="dislike" />}
+                {isDisliked ? <img src={redArrow} onClick={handleDislike} height="10px" alt="dislike" /> : <img src={arrow} className={!user && "disabled"} onClick={handleDislike} height="10px" alt="dislike" />}
                 
             </div>
 
@@ -92,7 +95,7 @@ export default function PostListItem({ post, user, setUser }) {
                     <p>{post.animal}</p>
 
                     <p>comments: {post.comments.length}</p>
-                    <span className="save-icon" onClick={handleSavePost}><SaveIcon user={user} setUser={setUser} userSaved={userSaved} /></span>
+                    <span className={ user ? "save-icon" : "save-icon disabled"} onClick={handleSavePost}><SaveIcon user={user} setUser={setUser} userSaved={userSaved} /></span>
                 </div>
             </div>
         </div>
