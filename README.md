@@ -28,14 +28,11 @@ Introducing Fetch, the comprehensive pet resources app designed exclusively for 
 flowchart TD
 
     App --> Nav
-    App --> Outlet
-    App --> Footer
-    Nav --> Cats
-    Nav --> Dogs
-    Nav --> Resources
-    Nav --> id9[ Logout ]
-    Resources --> Training
-    Resources --> Grooming
+    App --> DogInfoCard/CatInfoCard
+    App --> PostList
+    PostList --> PostListItem
+    PostListItem --> CommentList
+    CommentList --> CommentListItem
 ```
 
 #### User Stories
