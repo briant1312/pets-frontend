@@ -18,6 +18,7 @@ export default function Home({ setUser, user }) {
         async function getResources() {
             try {
                 const resources = await getSavedResources()
+                if(!resources){return}
                 setResources(resources.savedResources)
                 setComments(resources.comments)
             } catch (err) {
