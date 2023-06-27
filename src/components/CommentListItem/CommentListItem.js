@@ -16,7 +16,7 @@ export default function CommentListItem({ comment, user, setComments, comments }
     return (
         <div className="comment-container" >
             <div className="owner-info">
-                <img src={comment.owner.imageUrl} height="40px" alt="" />
+                <img src={comment.owner?.imageUrl} height="40px" alt="" />
 
                 <div>
                     <p>@{comment.owner?.userName}</p>
@@ -26,7 +26,7 @@ export default function CommentListItem({ comment, user, setComments, comments }
 
             <p className="comment-text">{comment.text}</p>
 
-            {user && user._id === comment.owner._id && <button className="comment-delete-button" onClick={handleDeleteComment}>delete</button>}
+            {user && user._id === comment.owner?._id && <button className="comment-delete-button" onClick={handleDeleteComment}>delete</button>}
         </div>
     )
 }
