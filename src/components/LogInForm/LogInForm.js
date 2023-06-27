@@ -3,7 +3,7 @@ import { logIn } from "../../utilities/users-api"
 import { getUser } from "../../utilities/users-service.js"
 import { Link, useNavigate } from 'react-router-dom';
 // import './LogInForm.scss'
-import paw from '../assets/paw.svg'
+import paw from "../assets/paw.svg"
 
 
 export default function LogInForm({ setUser }) {

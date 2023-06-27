@@ -15,15 +15,15 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    // position: relative;
+    gap: 2rem;
 }
 
 .post-text {
     display: flex; 
     padding: 5px;
     max-width: 80%;
-    font-size: 16px;
-    
+    font-size: 20px;
+    line-height: 30px
 }
 
 .like-block {
