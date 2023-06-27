@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { logIn } from "../../utilities/users-api"
 import { getUser } from "../../utilities/users-service.js"
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import './LogInForm.scss'
 
 
@@ -55,7 +55,7 @@ export default function LogInForm({setUser}){
             />
             <button type="submit">Log In</button>
         </form>
-        <p>Need an account? <a href="/signup">Register</a></p>
+        <p>Need an account? <Link to="/signup">Register</Link></p>
         <p className="error-message">{error}</p>
     </div>
     )

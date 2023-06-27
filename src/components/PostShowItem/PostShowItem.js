@@ -105,7 +105,7 @@ export default function PostShowItem({ resourceId, user, setUser }) {
               />
             </div>
             <div>
-              <img src={grooming} height="300vh" alt="groomed" />
+              <img src={post.imageUrl} height="300vh" alt="groomed" />
             </div>
           </div>
 
