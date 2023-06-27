@@ -124,7 +124,7 @@ export default function NavBar({ setUser, user }) {
                         </div>
                     </div>
 
-                    {user ? <h1 onClick={handleSignOut} className="log-out-link">Log Out</h1> : <Link to="/login"><h1>Sign Up/Sign In</h1></Link> }
+                    {user ? <h1 onClick={handleSignOut} className="log-out-link">Log Out</h1> : <Link to="/login"><h1>Log In</h1></Link> }
 
                 </div>
 
