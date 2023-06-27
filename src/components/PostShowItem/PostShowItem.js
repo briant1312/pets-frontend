@@ -7,7 +7,6 @@ import { createComment } from "../../utilities/comment-api";
 import arrow from "../assets/arrow.svg";
 import redArrow from '../assets/red-arrow.svg'
 import message from "../assets/Message.svg";
-import grooming from "../assets/grooming.jpg";
 import SaveIcon from "../SaveIcon/SaveIcon";
 import "./PostShowItem.scss";
 import { savePost } from "../../utilities/users-api";
@@ -25,9 +24,13 @@ export default function PostShowItem({ resourceId, user, setUser }) {
     const getPost = async () => {
       try {
         const selectedPost = await show(resourceId);
-        setPost(selectedPost);
-        setLikeTotal(selectedPost.likes.length - selectedPost.dislikes.length);
-        setComments(selectedPost.comments)
+        if(selectedPost) {
+          setIsDisliked(selectedPost.dislikes.includes(user?._id))
+          setisLiked(selectedPost.likes.includes(user?._id))
+          setPost(selectedPost);
+          setComments(selectedPost.comments)
+          setLikeTotal(selectedPost.likes.length - selectedPost.dislikes.length);
+        }
       } catch (err) {
         console.error(err);
       }
@@ -38,6 +41,10 @@ export default function PostShowItem({ resourceId, user, setUser }) {
   useEffect(() => {
     if (user) {
       setUserSaved(user.savedResources.includes(resourceId))
+    } else {
+      setIsDisliked(false)
+      setisLiked(false)
+      setUserSaved(false)
     }
   }, [user])
 
@@ -45,9 +52,10 @@ export default function PostShowItem({ resourceId, user, setUser }) {
     e.stopPropagation();
     try {
       const updatedPost = await likePost(post._id);
+      if(!updatedPost) return
       setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length);
-      setIsDisliked(false)
-      setisLiked(!isLiked)
+      setIsDisliked(updatedPost.dislikes.includes(user._id))
+      setisLiked(updatedPost.likes.includes(user._id))
     } catch (err) {
       console.error(err);
     }
@@ -57,9 +65,10 @@ export default function PostShowItem({ resourceId, user, setUser }) {
     e.stopPropagation();
     try {
       const updatedPost = await dislikePost(post._id);
+      if(!updatedPost) return
       setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length);
-      setisLiked(false)
-      setIsDisliked(!isDisliked)
+      setIsDisliked(updatedPost.dislikes.includes(user._id))
+      setisLiked(updatedPost.likes.includes(user._id))
     } catch (err) {
       console.error(err);
     }

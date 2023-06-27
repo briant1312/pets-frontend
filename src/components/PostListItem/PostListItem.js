@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-// import { TbArrowBigUpFilled, TbArrowBigDownFilled } from "react-icons/tb"
 import { likePost } from "../../utilities/post-api"
 import { dislikePost } from "../../utilities/post-api"
 import "./PostListItem.scss"
@@ -13,8 +12,6 @@ import SaveIcon from "../SaveIcon/SaveIcon"
 
 export default function PostListItem({ post, user, setUser }) {
     const [likeTotal, setLikeTotal] = useState(post.likes.length - post.dislikes.length)
-    // const [userLiked, setUserLiked] = useState(post.likes.includes(user._id));
-    // const [userDisliked, setUserDisliked] = useState(post.dislikes.includes(user._id));
     const navigate = useNavigate()
     const [userSaved, setUserSaved] = useState(false)
     const [isLiked, setisLiked] = useState(false)
@@ -29,9 +26,10 @@ export default function PostListItem({ post, user, setUser }) {
         e.stopPropagation()
         try {
             const updatedPost = await likePost(post._id)
+            if(!updatedPost) return
             setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
-            setIsDisliked(false)
-            setisLiked(!isLiked)
+            setIsDisliked(updatedPost.dislikes.includes(user._id))
+            setisLiked(updatedPost.likes.includes(user._id))
         } catch (err) {
             console.error(err)
         }
@@ -42,8 +40,8 @@ export default function PostListItem({ post, user, setUser }) {
         try {
             const updatedPost = await dislikePost(post._id)
             setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
-            setisLiked(false)
-            setIsDisliked(!isDisliked)
+            setIsDisliked(updatedPost.dislikes.includes(user._id))
+            setisLiked(updatedPost.likes.includes(user._id))
         } catch (err) {
             console.error(err)
         }
@@ -64,6 +62,12 @@ export default function PostListItem({ post, user, setUser }) {
     useEffect(() => {
         if (user) {
             setUserSaved(user.savedResources.includes(post._id))
+            setIsDisliked(post.dislikes.includes(user._id))
+            setisLiked(post.likes.includes(user._id))
+        } else {
+            setIsDisliked(false)
+            setisLiked(false)
+            setUserSaved(false)
         }
     }, [user])
 
