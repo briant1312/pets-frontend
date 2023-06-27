@@ -4,6 +4,7 @@ import { likePost } from "../../utilities/post-api"
 import { dislikePost } from "../../utilities/post-api"
 import "./PostListItem.scss"
 import arrow from '../assets/arrow.svg'
+import greenArrow from '../assets/green-arrow.png'
 import redArrow from '../assets/red-arrow.svg'
 import grooming from '../assets/grooming.jpg'
 import { savePost } from "../../utilities/users-api"
@@ -77,7 +78,7 @@ export default function PostListItem({ post, user, setUser }) {
     return (
         <div className="post-list-item">
             <div className="like-block-2">
-                {isLiked ? <img src={redArrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" /> :
+                {isLiked ? <img src={greenArrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" /> :
                 <img src={arrow} className={user ? "up-arrow" : "up-arrow disabled"} height="10px" onClick={handleLike} alt="like" />}
 
 
