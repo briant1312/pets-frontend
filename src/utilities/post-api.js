@@ -1,6 +1,7 @@
 import sendRequest from "./users-api";
 // const BASE_URL = process.env.REACT_APP_BASE_URL + "post"
-const BASE_URL = "http://localhost:3001/api/post"
+// const BASE_URL = "http://localhost:3001/api/post"
+const BASE_URL = "https://pet-server-nqxj.onrender.com/api/post"
 
 
 export async function index(category, query) {

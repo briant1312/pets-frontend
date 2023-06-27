@@ -1,6 +1,7 @@
 import sendRequest from "./users-api";
 // const BASE_URL = process.env.REACT_APP_BASE_URL + "comment"
-const BASE_URL = "http://localhost:3001/api/comment"
+// const BASE_URL = "http://localhost:3001/api/comment"
+const BASE_URL = "https://pet-server-nqxj.onrender.com/api/comment"
 
 export async function createComment(postId, comment) {
     try {
