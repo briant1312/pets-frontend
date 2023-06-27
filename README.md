@@ -28,6 +28,8 @@ Introducing Fetch, the comprehensive pet resources app designed exclusively for 
 flowchart TD
 
     App --> Nav
+    Nav --> SignUpForm
+    Nav --> LogInForm
     App --> DogInfoCard/CatInfoCard
     App --> PostList
     PostList --> PostListItem
