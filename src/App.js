@@ -11,6 +11,7 @@ import Posts from "./screens/posts/posts.js";
 import DogInfoCard from "./components/DogInfoCard/DogInfoCard.js"
 import CatInfoCard from "./components/CatInfoCard/CatInfoCard.js";
 import PostShow from "./screens/PostShow/PostShow.js";
+import "./components/global.scss"
 
 function App() {
   const [user, setUser] = useState(getUser())
