@@ -32,8 +32,8 @@ export default function LogInForm({ setUser }) {
             } else {
                 throw new Error("")
             }
-        } catch {
-            setError('Error Loggin In')
+        } catch(err) {
+            setError(err.message)
         }
     }
 

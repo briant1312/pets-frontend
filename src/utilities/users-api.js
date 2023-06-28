@@ -13,11 +13,7 @@ export async function signUp(userData) {
 }
 
 export async function logIn(credentials) {
-    try {
-        return sendRequest(`${BASE_URL}/login`, 'POST', credentials)
-    } catch(err) {
-        console.error(err)
-    }
+    return sendRequest(`${BASE_URL}/login`, 'POST', credentials)
 }
 
 export async function getSavedResources() {
@@ -58,10 +54,11 @@ export default async function sendRequest(url, method='GET', payload=null) {
                 return res.json()
             }
         } else {
-            throw new Error("Bad Request")
+            const error = await res.json()
+            throw new Error(error)
         }
     } catch(err) {
-        console.error(err)
+        throw new Error(err.message)
     }
 }
 

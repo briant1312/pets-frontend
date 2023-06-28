@@ -36,10 +36,9 @@ export default function SignUpForm({ setUser }) {
             setUser(user)
             navigate('/')
         } catch (error) {
-            console.error(error)
             setState({
                 ...state,
-                error: 'Sign up failed - Try again later'
+                error: error.message
             })
         }
     }

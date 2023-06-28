@@ -10,7 +10,7 @@ export async function signUp(userData) {
         localStorage.setItem('token', token)
         return getUser()
     } catch(err) {
-        throw new Error('')
+        throw new Error(err.message)
     }
 }
 
