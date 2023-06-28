@@ -147,7 +147,7 @@ export default function NavBar({ setUser, user }) {
             </h1>
           ) : (
             <Link to="/login" className="create-account">
-              <h1>Create <br></br> Account</h1>
+              <h1>Create <br></br>Account /</h1>
               <h1>Log-In</h1>
             </Link>
           )}
