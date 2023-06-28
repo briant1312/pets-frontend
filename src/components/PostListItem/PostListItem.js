@@ -42,6 +42,7 @@ export default function PostListItem({ post, user, setUser }) {
         if(!user) return
         try {
             const updatedPost = await dislikePost(post._id)
+            if(!updatedPost) return
             setLikeTotal(updatedPost.likes.length - updatedPost.dislikes.length)
             setIsDisliked(updatedPost.dislikes.includes(user._id))
             setisLiked(updatedPost.likes.includes(user._id))
