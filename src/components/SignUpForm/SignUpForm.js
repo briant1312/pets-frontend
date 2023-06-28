@@ -80,10 +80,10 @@ export default function SignUpForm({ setUser }) {
                     placeholder="Confirm Password"
                     required
                 />
-                <button type="submit">Create account</button>
+                <button type="submit">Create Account</button>
             </form>
             <div>
-                <p>Have an account? <Link to="/login">Log In</Link></p>
+                <p>Already have an account? <Link to="/login">Sign In</Link></p>
                 <p className="error-message">{state.error}</p>
             </div>
         </div>
