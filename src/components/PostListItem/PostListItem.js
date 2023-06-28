@@ -80,11 +80,13 @@ export default function PostListItem({ post, user, setUser }) {
             <div className="like-block-2">
                 {isLiked ? <img src={greenArrow} className="up-arrow" height="10px" onClick={handleLike} alt="like" /> :
                 <img src={arrow} className={user ? "up-arrow" : "up-arrow disabled"} height="10px" onClick={handleLike} alt="like" />}
+                {user &&<div className="like-tool-tip">{isLiked ? "unlike" : "like"}</div>}
 
 
                 {likeTotal}
 
-                {isDisliked ? <img src={redArrow} onClick={handleDislike} height="10px" alt="dislike" /> : <img src={arrow} className={!user && "disabled"} onClick={handleDislike} height="10px" alt="dislike" />}
+                {isDisliked ? <img src={redArrow} className="down-arrow" onClick={handleDislike} height="10px" alt="dislike" /> : <img src={arrow} className={user ? "down-arrow" : "disabled down-arrow"} onClick={handleDislike} height="10px" alt="dislike" />}
+                {user && <div className="dislike-tool-tip">dislike</div>}
                 
             </div>
 

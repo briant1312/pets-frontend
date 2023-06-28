@@ -17,12 +17,43 @@
     border: 1px solid black ;
     height: fit-content;
     gap: 10px;
+    position: relative;
+
+    .like-tool-tip {
+        position: absolute;
+        top: -22px;
+        left: 20px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        background-color: lightyellow;
+        padding: 5px 10px;
+        opacity: 0;
+    }
+
+    .dislike-tool-tip {
+        position: absolute;
+        top: 75px;
+        left: 15px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        background-color: lightyellow;
+        padding: 5px 10px;
+        opacity: 0;
+    }
 
     img {
         height: 8px;
         
         &:hover{
             cursor: pointer;
+        }
+
+        &.up-arrow:hover ~ .like-tool-tip {
+            opacity: 0.5;
+        }
+
+        &.down-arrow:hover ~ .dislike-tool-tip {
+            opacity: 0.5;
         }
     }
 }
