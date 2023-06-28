@@ -1,4 +1,3 @@
-import SignOut from "../../components/SignOutForm/SignOutForm.js"
 import { useEffect, useState } from "react"
 import { getSavedResources } from "../../utilities/users-api.js"
 import { useNavigate } from "react-router-dom"
@@ -16,6 +15,7 @@ export default function Home({ setUser, user }) {
 
     useEffect(() => {
         async function getResources() {
+            if(!user) return
             try {
                 const resources = await getSavedResources()
                 if(!resources){return}
