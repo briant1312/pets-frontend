@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
+
 :root {
 	--nav-blue: #6997C1;
 	--secondary-gray: #8E8E8E;
@@ -5,7 +7,7 @@
 
 * {
 	box-sizing: border-box;
-	font-family: Arial;
+	font-family: 'Klee One', cursive;
 }
 
 .hidden {
@@ -14,4 +16,9 @@
 
 body {
 	margin-bottom: 5rem;
+}
+
+
+input {
+	border-radius: 10px;
 }

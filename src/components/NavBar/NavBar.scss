@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Klee+One&display=swap');
+
+* {
+    font-family: 'Klee One', cursive;
+}
+
 .outer-div {
     // border: 1px solid red;
     background-color: var(--nav-blue);
@@ -29,18 +35,23 @@
     }
 }
 
+
 .logo {
     height: 150px;
     margin-bottom: 2rem;
     // border: 1px solid red;
 }
 
+
 .arrow {
     height: 15px;
+    margin-top: 12px;
+    
 }
 
 h1 {
     font-size: 30px;
+    font-weight: 300;
     // margin-bottom: 0;
 }
 
@@ -83,3 +94,10 @@ a {
 .log-out-link:hover {
     cursor: pointer;
 }
+
+.create-account {
+    display: flex;
+    align-items: end;
+    gap: 25px;
+}
+

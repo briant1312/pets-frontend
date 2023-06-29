@@ -63,11 +63,11 @@
     img {
 
         &.up-arrow:hover ~ .like-tool-tip {
-            opacity: 0.5;
+            opacity: 0.9;
         }
 
         &.down-arrow:hover ~ .dislike-tool-tip {
-            opacity: 0.5;
+            opacity: 0.9;
         }
     }
 }

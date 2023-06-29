@@ -133,7 +133,7 @@ export default function PostShowItem({ resourceId, user, setUser }) {
           <div className="icons-comment-input">
             <div className="icons">
               <img src={message} alt="comment" height="20px" />
-              <p className="comment-count">{post.comments.length} comment</p>
+              <p className="comment-count">{comments.length} comment</p>
               <span className={user ? "save-icon" : "save-icon disabled"} onClick={handleSavePost}><SaveIcon post={post} userSaved={userSaved} /></span>
             </div>
             <div className="comment-section">
