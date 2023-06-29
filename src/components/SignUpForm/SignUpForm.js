@@ -36,10 +36,9 @@ export default function SignUpForm({ setUser }) {
             setUser(user)
             navigate('/')
         } catch (error) {
-            console.error(error)
             setState({
                 ...state,
-                error: 'Sign up failed - Try again later'
+                error: error.message
             })
         }
     }
@@ -84,7 +83,7 @@ export default function SignUpForm({ setUser }) {
             </form>
             <div>
                 <p>Already have an account? <Link to="/login">Sign In</Link></p>
-                <p className="error-message">{state.error}</p>
+                <p style={{color: "orangered"}} className="error-message">{state.error}</p>
             </div>
         </div>
     )

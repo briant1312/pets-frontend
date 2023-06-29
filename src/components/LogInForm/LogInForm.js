@@ -32,8 +32,8 @@ export default function LogInForm({ setUser }) {
             } else {
                 throw new Error("")
             }
-        } catch {
-            setError('Error Loggin In')
+        } catch(err) {
+            setError(err.message)
         }
     }
 
@@ -66,7 +66,7 @@ export default function LogInForm({ setUser }) {
                 <button type="submit">Log In</button>
             </form>
             <p>Need an account? <Link to="/signup">Create an account</Link></p>
-            <p className="error-message">{error}</p>
+            <p style={{color: "orangered"}} className="error-message">{error}</p>
         </div>
     )
 
