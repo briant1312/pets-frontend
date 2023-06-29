@@ -83,7 +83,7 @@ export default function SignUpForm({ setUser }) {
             </form>
             <div>
                 <p>Have an account? <Link to="/login">Log In</Link></p>
-                <p className="error-message">{state.error}</p>
+                <p style={{color: "orangered"}} className="error-message">{state.error}</p>
             </div>
         </div>
     )

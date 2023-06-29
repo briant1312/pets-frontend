@@ -15,15 +15,24 @@ export default function Posts({ user, setUser }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const posts = await postsAPI.index(resource, query)
-        setPosts(posts || [])
-        setQuery("")
+        try {
+            const posts = await postsAPI.index(resource, query)
+            setPosts(posts || [])
+            setQuery("")
+
+        } catch(err) {
+            console.error(err)
+        }
     }
 
     useEffect(() => {
         async function loadPosts() {
-            const posts = await postsAPI.index(resource, query)
-            setPosts(posts || [])
+            try {
+                const posts = await postsAPI.index(resource, query)
+                setPosts(posts || [])
+            } catch(err) {
+                console.error(err)
+            }
         }
 
         loadPosts()
